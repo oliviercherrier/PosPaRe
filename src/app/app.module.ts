@@ -1,14 +1,36 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { AuthConfig, AuthHttp } from 'angular2-jwt';
+import { Http } from '@angular/http';
+
+import {AuthService} from '../services/auth';
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { FriendsPage } from '../pages/friends/friends';
+import { HomePage } from '../pages/home/home';
+import {ListOfActivitiesPage} from '../pages/list-of-activities/list-of-activities';
+import {ProfilePage} from '../pages/profile/profile';
+import {RecordActivityPage} from '../pages/record-activity/record-activity';
+import {StatisticsPage} from '../pages/statistics/statistics';
+
+let storage: Storage = new Storage();
+
+export function getAuthHttp(http) {
+  return new AuthHttp(new AuthConfig({
+    globalHeaders: [{'Accept': 'application/json'}],
+    tokenGetter: (() => storage.get('id_token'))
+  }), http);
+}
 
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2
+    FriendsPage,
+    HomePage,
+    ListOfActivitiesPage,
+    ProfilePage,
+    RecordActivityPage,
+    StatisticsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -16,9 +38,21 @@ import { Page2 } from '../pages/page2/page2';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2
+    FriendsPage,
+    HomePage,
+    ListOfActivitiesPage,
+    ProfilePage,
+    RecordActivityPage,
+    StatisticsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    AuthService,
+    {
+      provide: AuthHttp,
+      useFactory: getAuthHttp,
+      deps: [Http]
+    },
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.pospare646272" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<!-- Fixme: Name have been put to com.transistorsoft.backgroundgeolocation.ionic to avoid to pay backgroundgeolocation while application is in development-->
+<widget id="com.transistorsoft.backgroundgeolocation.ionic" version="5.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>pospare</name>
   <description>An awesome Ionic/Cordova app.</description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -36,4 +37,10 @@
   <plugin name="cordova-plugin-statusbar" spec="2.2.1"/>
   <plugin name="cordova-plugin-device" spec="1.1.4"/>
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.1"/>
+
+  <!-- Feature below added for Auth0 authentification -->
+  <feature name="InAppBrowser">
+    <param name="ios-package" value="CDVInAppBrowser" />
+    <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+  </feature>
 </widget>
