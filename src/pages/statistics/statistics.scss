@@ -1,3 +1,23 @@
-page-statistics {
+.statistics {
 
+}
+chart {
+    display: block;
+    height: 300px;
+}
+
+.activity-cell {
+    position: relative;
+    height: 40px; 
+    width: 40px;
+}
+
+.activity-circle {
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    top: 50%; 
+    left: 50%;  
+    background-color: gray;  
+    opacity: 1; 
+    border-radius: 100%
 }

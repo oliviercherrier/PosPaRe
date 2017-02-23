@@ -48,7 +48,7 @@ export class AuthService {
 
       // Fetch profile information
       console.log(authResult);
-      this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
+      this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
           // Handle error
           alert(error);
