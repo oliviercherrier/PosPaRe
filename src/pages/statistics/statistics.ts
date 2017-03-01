@@ -198,7 +198,13 @@ export class StatisticsPage {
  }.bind(this),
  */
 
-
+    var self = this;
+    setTimeout(
+      function(){
+        console.log("User connected as: ", self.auth.user);
+      },
+      10000
+    );
     // Get data from REST API
     /*this.dataService
       .GetAll()
@@ -207,9 +213,7 @@ export class StatisticsPage {
         error => console.log(error),
         () => console.log(this.myItems)
       );*/
-
-    // Get profile User Name
-    console.log("User connected as: " + this.auth.user["nickname"]);
+    
 
   }
 

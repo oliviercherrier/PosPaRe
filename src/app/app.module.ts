@@ -36,6 +36,7 @@ export function getAuthHttp(http) {
     RecordActivityPage,
     StatisticsPage  
   ],
+  // Module used into HTML code
   imports: [
     IonicModule.forRoot(MyApp),
     BrowserModule, 

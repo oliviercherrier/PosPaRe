@@ -17,7 +17,8 @@ export class AuthService {
     auth: {
       redirect: false,
       params: {
-        scope: 'openid'
+        scope: 'openid profile offline_access',
+        device: 'my-device'
       }
     }
   });
@@ -44,10 +45,7 @@ export class AuthService {
       this.storage.set('id_token', authResult.idToken);
       this.idToken = authResult.idToken;
 
-      
-
       // Fetch profile information
-      console.log(authResult);
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
           // Handle error
@@ -58,6 +56,8 @@ export class AuthService {
         profile.user_metadata = profile.user_metadata || {};
         this.storage.set('profile', JSON.stringify(profile));
         this.user = profile;
+        console.log("profile");
+        console.log(profile);
       });
 
       this.lock.hide();
@@ -95,7 +95,6 @@ export class AuthService {
 
   let source = Observable.of(this.idToken).flatMap(
     token => {
-      console.log('token here', token);
       // The delay to generate in this case is the difference
       // between the expiry time and the issued at time
       let jwtIat = this.jwtHelper.decodeToken(token).iat;

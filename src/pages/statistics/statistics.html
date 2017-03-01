@@ -6,31 +6,34 @@
 -->
 <ion-header>
 <ion-navbar primary>
-    <button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     <ion-title> Mes statistiques</ion-title>
-    <ion-buttons end><button (click)="auth.logout()"><ion-icon item-right name="log-out"></ion-icon></button></ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="auth.logout()"><ion-icon item-right name="log-out"></ion-icon></button></ion-buttons>
 </ion-navbar>
 </ion-header>
 <ion-content>
+
   <div id="topSection">
     <div id = "mumSection" style="  width: 50%; float: left;  text-align: center; border-style: none groove none none; border-color: blue; border-width: 1px;">
       <div style= "display: flex"> 
         <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
-          <img src="img/fatigue-example.png" height= "100" width="100" style="padding-bottom: 15px"/>
+          <img src="assets/img/fatigue-example.png" height= "100" width="100" style="padding-bottom: 15px"/>
         </div>
         <div style="margin: auto; width: 70%; float: right; padding: 5px">
           <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 120px; width: 100%"></chart>
         </div>
       </div>
-      <div style="width: 100%; text-align: left; padding-left: 5px; text-align: center; border-style: none  none groove none; border-color: blue; border-width: 1px;">
-        Badges Maman <!--<p>{{ auth.user.nickname }}</p>-->
+      <div  style="width: 100%; text-align: left; padding-left: 5px; text-align: center; border-style: none  none groove none; border-color: blue; border-width: 1px;">
+        <p> Badges Maman </p>
+        <!--<p *ngIf="auth.authenticated()"> {{ auth.user.name }} </p>-->
       </div>
     </div>
 
     <div id = "babySection" style=" width: 50%; float: right;  text-align: center">
       <div style= "display: flex"> 
         <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
-          <img src="img/baby-icon.png" height= "100" width="100" style="padding-bottom: 15px"/>
+          <img src="assets/img/baby-icon.png" height= "100" width="100" style="padding-bottom: 15px"/>
         </div>
         <div style="margin: auto; width: 70%; float: right; padding: 5px">
             <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" style="height: 120px; width: 100%"></chart>
