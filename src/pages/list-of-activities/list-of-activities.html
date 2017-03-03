@@ -1,18 +1,58 @@
 <!--
-  Generated template for the ListOfActivities page.
+  Generated template for the ListOfActivitiesPage page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
+<ion-navbar primary>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>Mes activités</ion-title>
+    <ion-buttons end><button ion-button (click)="auth.logout()"><ion-icon item-right name="log-out"></ion-icon></button></ion-buttons>
+</ion-navbar>
 
-  <ion-navbar>
-    <ion-title>list-of-activities</ion-title>
-  </ion-navbar>
+ <ion-toolbar no-border-top>
 
+   <ion-segment [(ngModel)]="relationship">
+      <ion-segment-button value="moi">
+        Moi
+      </ion-segment-button>
+      <ion-segment-button value="abonnements">
+        Abonnements
+      </ion-segment-button>
+    </ion-segment>
+ </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
-    <p> List of Activities Page </p>
+  <ion-list>
+    <div id = "activities">
+      <div *ngFor="let activity of activities" id="act_{{activity.id}}" style="margin-bottom: 5px;">
+        <div id="top_{{activity.id}}">
+          <div style="float: left; display:flex">
+            <ion-icon style="color: black; font-size: 50px; margin: auto" name="happy"></ion-icon>
+            <div style="padding-left: 5px; margin: auto">
+              <div style= "font-size: 120%;">Sortie à vélo matinale - Col du {{activity.id}}</div>
+              <div>Olivier Cherrier</div>
+            </div>
+          </div>
+          <div style="clear: both; float:left; display: flex">
+            <div style="width: 40px; text-align:center">
+              <ion-icon style="color: black; font-size: 20px; margin: auto" name="bicycle"></ion-icon>
+            </div>
+            <span style=" padding-left: 5px; margin: auto">83.5 km</span>
+            <span style=" padding-left: 5px; margin: auto; margin-left: 10px">200 m</span>
+          </div>
+        </div>
+        <div id = "bottom_{{activity.id}}" style="overflow: auto; width: 100%">
+          <div id="map_{{activity.id}}" style="height: 250px;">
+            <div style="width:100%; position: absolute; z-index:1;  padding-left: 10px; font-size: 18px; padding-top: 210px; text-align: left">
+              <ion-icon style="background-color: white; padding: 4px; border-radius: 8px" primary name="chatbubbles"><font size="3"> 0 </font></ion-icon>
+              <ion-icon style="background-color: white; padding: 4px; border-radius: 8px" primary name="thumbs-up"><font size="3"> 10 </font></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-list>
 </ion-content>
