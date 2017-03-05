@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 
+import * as L from 'leaflet';
+
 @Component({
   selector: 'page-record-activity',
   templateUrl: 'record-activity.html'
@@ -10,6 +12,9 @@ export class RecordActivityPage {
   * Reference to BackgroundGeolocation
   */
   private bgGeo: any;
+  private map: any;
+  public locations; // Polyline for leaflet
+
   public nav: NavController;
   constructor(public navCtrl: NavController, public platform: Platform) {
     this.nav = navCtrl;
@@ -31,21 +36,41 @@ export class RecordActivityPage {
     this.bgGeo.configure({
       debug: true,
       desiredAccuracy: 0,
-      distanceFilter: 10,
-      url: 'http://192.168.11.100:8080/locations',
-      autoSync: true
+      distanceFilter: 0,
+      locationUpdateInterval: 0,
+      fastestLocationUpdateInterval: 0
+
+      // url: 'http://192.168.11.100:8080/locations',
+      // autoSync: true
     }, (state) => {
       // 4. Start the plugin.
-      this.bgGeo.start();
+      // this.bgGeo.start();
     });
+  }
+
+  ionViewDidEnter (){
+    this.map = L.map('mapid').setView([51.505, -0.09], 13);
+    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(this.map);
+    this.locations = L.polyline([], {color: 'red'}).addTo(this.map);
+  }
+
+  startGeolocation(){
+    this.bgGeo.start();
   }
 
   onLocation(location, taskId) {
     console.log('- location: ', location);
+
+
+    // Update leaflet map
+    this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
+    this.map.fitBounds(this.locations.getBounds());
+
     this.bgGeo.finish(taskId);
   }
   onMotionChange(isMoving, location, taskId) {
     console.log('- motionchange: ', isMoving, location);
+
     this.bgGeo.finish(taskId);
   }
   onActivityChange(activity) {
@@ -60,9 +85,5 @@ export class RecordActivityPage {
   }
   onHttpFailure(response) {
     console.log('- http failure: ', response);
-  }
-
-  goBack(){
-    this.nav.pop();
   }
 }

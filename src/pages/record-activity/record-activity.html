@@ -7,15 +7,16 @@
 <ion-header>
 
 <ion-navbar primary>
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     <ion-title>Enregistrer une activité</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="goBack()"><ion-icon item-right name="arrow-back"></ion-icon></button></ion-buttons>
 </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <p> Record Activity Page </p>
+  <div id="mapid" style="height: 250px;"></div>
 </ion-content>
+
+<ion-footer style="text-align: center">
+  <button ion-button icon-only (click)="this.startGeolocation()"><ion-icon name="play"></ion-icon></button>
+</ion-footer>
