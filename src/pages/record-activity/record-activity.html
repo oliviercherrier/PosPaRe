@@ -6,9 +6,12 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>record-activity</ion-title>
-  </ion-navbar>
+<ion-navbar primary>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>Enregistrer une activité</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goBack()"><ion-icon item-right name="arrow-back"></ion-icon></button></ion-buttons>
+</ion-navbar>
 
 </ion-header>
 

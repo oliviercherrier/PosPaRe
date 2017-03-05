@@ -1,18 +1,29 @@
 <!--
-  Generated template for the Friends page.
+  Generated template for the FriendsPage page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>friends</ion-title>
-  </ion-navbar>
-
+<ion-navbar primary>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>Mes amis</ion-title>
+    <ion-buttons end><button ion-button (click)="auth.logout()"><ion-icon item-right name="log-out"></ion-icon></button></ion-buttons>
+</ion-navbar>
+ <ion-toolbar no-border-top>
+  <ion-searchbar></ion-searchbar>
+ </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-    <p> Friends Page </p>
+ <ion-list>
+    <button ion-item *ngFor="let friend of friends" (click)="friendTapped($event, friend)">
+      <ion-icon name="git-compare" item-right> </ion-icon>
+      <ion-icon style="color: black; font-size: 50px; margin: auto" name="happy"></ion-icon>
+      {{friend.name}}
+    </button>
+    
+
+  </ion-list>
 </ion-content>

@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+import {AuthService} from '../../services/auth';
 
-/*
-  Generated class for the Friends page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-friends',
   templateUrl: 'friends.html'
 })
 export class FriendsPage {
+  friends: Array<{name: string}>;
+  constructor(private auth: AuthService, private navCtrl: NavController) {
+    this.friends = [];
+    this.friends.push({name: 'Anne Perdrillat'});
+    this.friends.push({name: "Julie Morel"});
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FriendsPage');
+  friendTapped(event, item) {
+    /*this.navCtrl.push(ItemDetailsPage, {
+      item: item
+    });*/
   }
 
 }
