@@ -14,100 +14,103 @@
 </ion-header>
 <ion-content>
 
-  <div id="topSection">
-    <div id = "mumSection" style="  width: 50%; float: left;  text-align: center; border-style: none groove none none; border-color: blue; border-width: 1px;">
-      <div style= "display: flex"> 
-        <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
-          <img src="assets/img/fatigue-example.png" height= "100" width="100" style="padding-bottom: 15px"/>
-        </div>
-        <div style="margin: auto; width: 70%; float: right; padding: 5px">
-          <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 120px; width: 100%"></chart>
-        </div>
-      </div>
-      <div  style="width: 100%; text-align: left; padding-left: 5px; text-align: center; border-style: none  none groove none; border-color: blue; border-width: 1px;">
-        <p> Badges Maman </p>
-        <!--<p *ngIf="auth.authenticated()"> {{ auth.user.name }} </p>-->
-      </div>
-    </div>
-
-    <div id = "babySection" style=" width: 50%; float: right;  text-align: center">
-      <div style= "display: flex"> 
-        <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
-          <img src="assets/img/baby-icon.png" height= "100" width="100" style="padding-bottom: 15px"/>
-        </div>
-        <div style="margin: auto; width: 70%; float: right; padding: 5px">
-            <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" style="height: 120px; width: 100%"></chart>
-        </div>
-      </div>
-      <div style="width: 100%; text-align: left; padding-left: 5px; text-align: center; border-style: none  none groove none; border-color: blue; border-width: 1px;">
-        <p> Badges Bébé </p>
-      </div>
-    </div>
-  </div>
-  <div id="middleSection" style="clear: left; width: 100%; padding: 10px;">
-    <span >
-      Ce mois ci <b>3h46</b> sur 8h:
-    </span> 
-    <chart [options]="mumyProgressBarOptions" (load)="saveMumyProgressBar($event.context)" style="height: 80px;"></chart>
-  </div>
-
-  <div id="bottomSection" style="border-style: groove none   none none ; border-color: blue; border-width: 1px;" >
-    <div style="clear: left; width: 100%; padding: 10px;">
-      <span>4 dernières semaines</span>
-    </div>
-    <table style="margin-left: auto; margin-right: auto; text-align: center">
-      <tr style="height: 30px">
-        <th><span  >L</span></th>
-        <th><span>M</span></th>
-        <th><span>M</span></th>
-        <th><span>J</span></th>
-        <th><span>V</span></th>
-        <th><span>S</span></th>
-        <th><span>D</span></th>
-        <th><span>Total</span></th>
-      </tr>
-      <tr>
-        <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px; background-color: #333;  "></span></td> 
-      </tr>
-      <tr>
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
-        <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
-        <td class="activity-cell" ><span class="activity-circle" style="height: 20px; width: 20px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 14px; width: 14px; background-color: #333;"></span></td> 
-      </tr>
-      <tr>
-        <td class="activity-cell" ><span class="activity-circle" style="height: 4px; width: 4px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td> 
-        <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 5px; width: 5px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 20px; width: 20px; background-color: #333;"></span></td> 
-      </tr>
-      <tr>
-        <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
-        <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 24px; width: 24px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
-        <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
-        <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
-        <td class="activity-cell"><span class="activity-circle" style="height: 24px; width: 24px; background-color: #333;"></span></td> 
-      </tr>
-    </table>
-  </div>
-  
-  
-  </ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col> <!-- Column mumy -->
+        <ion-row center> <!-- Row image & graph -->
+          <ion-col>
+            <img src="assets/img/fatigue-example.png" height= "100" width="100" />
+          </ion-col>
+          <ion-col width-75>
+            <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 120px"></chart>
+          </ion-col>
+        </ion-row>
+        <ion-row center> <!-- Row Badges -->
+          <ion-col text-center>
+            <p> Badges Maman </p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col> <!-- Column baby -->
+        <ion-row center> <!-- Row image & graph -->
+          <ion-col>
+         <img src="assets/img/baby-icon.png" height= "80" width="100"/>
+          </ion-col>
+          <ion-col width-75>
+            <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" style="height: 120px"></chart>
+          </ion-col>
+        </ion-row>
+        <ion-row center> <!-- Row Badges -->
+          <ion-col text-center>
+            <p> Badges Baby </p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row> <!-- Progress bar -->
+      <ion-col>
+        <span >
+          Ce mois ci <b>3h46</b> sur 8h:
+        </span> 
+        <chart [options]="mumyProgressBarOptions" (load)="saveMumyProgressBar($event.context)" style="height: 80px;"></chart>
+      </ion-col>
+    </ion-row>
+    <ion-row> <!-- Activity last 4 weeks -->
+      <ion-col>
+        <span>4 dernières semaines</span>
+        <table style="margin-left: auto; margin-right: auto; text-align: center">
+          <tr style="height: 30px">
+            <th><span  >L</span></th>
+            <th><span>M</span></th>
+            <th><span>M</span></th>
+            <th><span>J</span></th>
+            <th><span>V</span></th>
+            <th><span>S</span></th>
+            <th><span>D</span></th>
+            <th><span>Total</span></th>
+          </tr>
+          <tr>
+            <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 0px; width: 0px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px; background-color: #333;  "></span></td> 
+          </tr>
+          <tr>
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
+            <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
+            <td class="activity-cell" ><span class="activity-circle" style="height: 20px; width: 20px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 14px; width: 14px; background-color: #333;"></span></td> 
+          </tr>
+          <tr>
+            <td class="activity-cell" ><span class="activity-circle" style="height: 4px; width: 4px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td> 
+            <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 5px; width: 5px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 20px; width: 20px; background-color: #333;"></span></td> 
+          </tr>
+          <tr>
+            <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
+            <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 24px; width: 24px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 10px; width: 10px"></span></td>
+            <td class="activity-cell" ><span class="activity-circle" style="height: 14px; width: 14px"></span></td> 
+            <td class="activity-cell"><span class="activity-circle" style="height: 1px; width: 1px"></span></td>
+            <td class="activity-cell"><span class="activity-circle" style="height: 24px; width: 24px; background-color: #333;"></span></td> 
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
