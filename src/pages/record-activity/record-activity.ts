@@ -15,11 +15,14 @@ export class RecordActivityPage {
   private map: any;
   public locations; // Polyline for leaflet
 
-  public nav: NavController;
-  constructor(public navCtrl: NavController, public platform: Platform) {
-    this.nav = navCtrl;
+  private registeringEnable: boolean = false;
 
-    platform.ready().then(this.configureBackgroundGeolocation.bind(this));
+  public nav: NavController;
+  public platform: Platform;
+  constructor(public _navCtrl: NavController, public _platform: Platform) {
+    this.nav = _navCtrl;
+    this.platform = _platform;
+    
   }
   configureBackgroundGeolocation() {
     // 1. Get a reference to the plugin
@@ -49,22 +52,29 @@ export class RecordActivityPage {
   }
 
   ionViewDidEnter (){
-    this.map = L.map('mapid').setView([51.505, -0.09], 13);
+    this.map = L.map('mapid');
     L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(this.map);
     this.locations = L.polyline([], {color: 'red'}).addTo(this.map);
+
+    this.platform.ready().then(this.configureBackgroundGeolocation.bind(this));
   }
 
-  startGeolocation(){
+  startRegistering(){
     this.bgGeo.start();
+    this.registeringEnable = true;
   }
 
   onLocation(location, taskId) {
     console.log('- location: ', location);
 
-
     // Update leaflet map
-    this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
-    this.map.fitBounds(this.locations.getBounds());
+    if (this.registeringEnable) {    
+      this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
+      this.map.fitBounds(this.locations.getBounds());
+    }
+    else{
+      this.map.setView([location.coords.latitude, location.coords.longitude],13)
+    }
 
     this.bgGeo.finish(taskId);
   }
