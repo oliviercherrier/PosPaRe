@@ -1,12 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import {AuthHttp, AuthConfig} from 'angular2-jwt';
 
 import {HomePage} from '../pages/home/home';
 import {RecordActivityPage} from '../pages/record-activity/record-activity';
 import {ProfilePage} from '../pages/profile/profile';
-import {AuthService} from '../services/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,9 +21,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Accueil', component: HomePage },
-      { title: 'Profil', component: ProfilePage },
-      { title: 'Enregistrer activité', component: RecordActivityPage }
+      { title: 'Enregistrer activité', component: RecordActivityPage },
+      { title: 'Profil', component: ProfilePage }
     ];
 
   }
