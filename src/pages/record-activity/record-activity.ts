@@ -70,11 +70,8 @@ export class RecordActivityPage {
     // Update leaflet map
     if (this.registeringEnable) {    
       this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
-      this.map.fitBounds(this.locations.getBounds());
     }
-    else{
-      this.map.setView([location.coords.latitude, location.coords.longitude],13)
-    }
+    this.map.setView([location.coords.latitude, location.coords.longitude],13)
 
     this.bgGeo.finish(taskId);
   }
