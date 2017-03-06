@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-<ion-navbar primary>
+<ion-navbar>
     <ion-title>Enregistrer une activité</ion-title>
 </ion-navbar>
 
@@ -18,5 +18,7 @@
 </ion-content>
 
 <ion-footer style="text-align: center">
-  <button ion-button icon-only (click)="this.startRegistering()"><ion-icon name="play"></ion-icon></button>
+  <button ion-button icon-only clear large style="font-size: 40px;" (click)="this.startRegistering()">
+    <ion-icon color="danger" name="radio-button-on"></ion-icon>
+  </button>
 </ion-footer>
