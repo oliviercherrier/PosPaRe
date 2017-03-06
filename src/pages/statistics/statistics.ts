@@ -1,11 +1,6 @@
-import {Component, ViewChild, ElementRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from '../../services/auth';
-import {ListOfActivitiesPage} from '../list-of-activities/list-of-activities';
-import {DataService} from '../../services/data-service';
-import {MyTypedItem} from '../../models/myTypedItem';
 import { NavController, NavParams } from 'ionic-angular';
-
-import { Chart } from 'angular-highcharts';
 
 /*
   Generated class for the StatisticsPage page.
@@ -15,15 +10,14 @@ import { Chart } from 'angular-highcharts';
 */
 @Component({
   selector: 'page-statistics',
-  providers: [DataService],
+  providers: [],
   templateUrl: 'statistics.html'
 })
 
 export class StatisticsPage {
-  public myItems: MyTypedItem [];
   public auth: AuthService;
 
-  constructor(public _auth: AuthService, private dataService: DataService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
     this.auth = _auth;
 
     this.mumyWeightChartOptions = {
@@ -184,37 +178,6 @@ export class StatisticsPage {
           { data: [Date.UTC(1970, 0, 1, 4,14)]
         }]
     };
-  }
-
-  ionViewDidEnter(){
-
-/*
- (data) => this.myItems = data,
-
- équivaut à
- 
- function (data){
-   this.myItems = data;
- }.bind(this),
- */
-
-    var self = this;
-    setTimeout(
-      function(){
-        console.log("User connected as: ", self.auth.user);
-      },
-      10000
-    );
-    // Get data from REST API
-    /*this.dataService
-      .GetAll()
-      .subscribe(
-        (data) => { this.myItems = data } ,
-        error => console.log(error),
-        () => console.log(this.myItems)
-      );*/
-    
-
   }
 
   ionViewDidLoad() {
