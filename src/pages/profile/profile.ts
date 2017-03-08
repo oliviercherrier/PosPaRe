@@ -12,11 +12,16 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
-
+  
+  private profile = {};
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
 
+  logForm() {
+    console.log(this.profile)
+  }
 }

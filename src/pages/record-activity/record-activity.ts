@@ -14,7 +14,8 @@ export class RecordActivityPage {
   private bgGeo: any;
   private map: any;
   public locations; // Polyline for leaflet
-
+  private currentLocationLMarker: any; // Leaflet CircleMarker
+  private currentLocationErrorLCircle: any; // Leaflet CircleMarker
   private registeringEnable: boolean = false;
 
   public nav: NavController;
@@ -47,20 +48,21 @@ export class RecordActivityPage {
       // autoSync: true
     }, (state) => {
       // 4. Start the plugin.
-      // this.bgGeo.start();
+      this.bgGeo.start();
     });
   }
 
   ionViewDidEnter (){
     this.map = L.map('mapid');
     L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(this.map);
-    this.locations = L.polyline([], {color: 'red'}).addTo(this.map);
+    this.locations = L.polyline([], {color: 'blue'}).addTo(this.map);
+    this.currentLocationLMarker =  L.circleMarker([1,1],{color: "#ff0000"}).addTo(this.map);
+    this.currentLocationErrorLCircle = L.circle([1,1],{weight: 0, fillColor: "#ff0000", fillOpacity: 0.5}).addTo(this.map);
 
     this.platform.ready().then(this.configureBackgroundGeolocation.bind(this));
   }
 
   startRegistering(){
-    this.bgGeo.start();
     this.registeringEnable = true;
   }
 
@@ -71,8 +73,11 @@ export class RecordActivityPage {
     if (this.registeringEnable) {    
       this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
     }
-    this.map.setView([location.coords.latitude, location.coords.longitude],13)
-
+    this.map.setView([location.coords.latitude, location.coords.longitude],16);
+    this.currentLocationLMarker.setLatLng([location.coords.latitude, location.coords.longitude]);
+    this.currentLocationErrorLCircle.setLatLng([location.coords.latitude, location.coords.longitude]);
+    this.currentLocationErrorLCircle.setRadius(location.coords.accuracy);
+    
     this.bgGeo.finish(taskId);
   }
   onMotionChange(isMoving, location, taskId) {
