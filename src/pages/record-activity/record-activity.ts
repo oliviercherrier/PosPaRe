@@ -22,9 +22,9 @@ export class RecordActivityPage {
   public platform: Platform;
   constructor(public _navCtrl: NavController, public _platform: Platform) {
     this.nav = _navCtrl;
-    this.platform = _platform;
-    
+    this.platform = _platform;  
   }
+
   configureBackgroundGeolocation() {
     // 1. Get a reference to the plugin
     this.bgGeo = (<any>window).BackgroundGeolocation;
@@ -62,6 +62,15 @@ export class RecordActivityPage {
     this.platform.ready().then(this.configureBackgroundGeolocation.bind(this));
   }
 
+  isRegisteringStarted(): boolean {
+    if (this.locations == undefined) {
+      return false;
+    }
+
+    return this.locations.getLatLngs().length > 0;
+
+  }
+
   startRegistering(){
     this.registeringEnable = true;
   }
@@ -76,6 +85,7 @@ export class RecordActivityPage {
     // Update leaflet map
     if (this.registeringEnable) {    
       this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
+      console.log("Location saved into list of locations");
     }
     this.map.setView([location.coords.latitude, location.coords.longitude],16);
     this.currentLocationLMarker.setLatLng([location.coords.latitude, location.coords.longitude]);

@@ -21,6 +21,10 @@
   <button *ngIf="!this.registeringEnable" ion-button icon-only clear large style="font-size: 40px;" (click)="this.startRegistering()">
     <ion-icon color="danger" name="radio-button-on"></ion-icon>
   </button>
+  <button *ngIf="!this.registeringEnable && this.isRegisteringStarted()" ion-button icon-only clear large style="font-size: 40px;" (click)="this.startRegistering()">
+    <ion-icon color="danger" name="square"></ion-icon>
+  </button>
+
 
   <button *ngIf="this.registeringEnable" ion-button icon-only clear large style="font-size: 40px;" (click)="this.stopRegistering()">
     <ion-icon color="danger" name="pause"></ion-icon>
