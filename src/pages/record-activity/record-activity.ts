@@ -18,6 +18,8 @@ export class RecordActivityPage {
   private currentLocationErrorLCircle: any; // Leaflet CircleMarker
   private registeringEnable: boolean = false;
 
+  private lastRecenteringTimestamp = 0; // Timestamp when the last recentering of location have been made on Leaflet
+
   public nav: NavController;
   public platform: Platform;
   constructor(public _navCtrl: NavController, public _platform: Platform) {
@@ -87,7 +89,12 @@ export class RecordActivityPage {
       this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
       console.log("Location saved into list of locations");
     }
-    this.map.setView([location.coords.latitude, location.coords.longitude],16);
+
+    if (this.lastRecenteringTimestamp == 0){
+      this.map.setView([location.coords.latitude, location.coords.longitude],16);
+      this.lastRecenteringTimestamp = Date.now();
+    }
+    
     this.currentLocationLMarker.setLatLng([location.coords.latitude, location.coords.longitude]);
     this.currentLocationErrorLCircle.setLatLng([location.coords.latitude, location.coords.longitude]);
     this.currentLocationErrorLCircle.setRadius(location.coords.accuracy);
