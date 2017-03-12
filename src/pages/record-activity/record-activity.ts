@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
+import {WORKOUT_STATUS} from './workout-status';
 
 import * as L from 'leaflet';
+
 
 @Component({
   selector: 'page-record-activity',
   templateUrl: 'record-activity.html'
 })
 export class RecordActivityPage {
+  WORKOUT_STATUS: typeof WORKOUT_STATUS = WORKOUT_STATUS;
   /**
   * Reference to BackgroundGeolocation
   */
@@ -16,9 +19,9 @@ export class RecordActivityPage {
   public locations; // Polyline for leaflet
   private currentLocationLMarker: any; // Leaflet CircleMarker
   private currentLocationErrorLCircle: any; // Leaflet CircleMarker
-  private registeringEnable: boolean = false;
-
   private lastRecenteringTimestamp = 0; // Timestamp when the last recentering of location have been made on Leaflet
+
+  private workoutStatus: WORKOUT_STATUS = WORKOUT_STATUS.NotStarted;
 
   public nav: NavController;
   public platform: Platform;
@@ -64,37 +67,35 @@ export class RecordActivityPage {
     this.platform.ready().then(this.configureBackgroundGeolocation.bind(this));
   }
 
-  isRegisteringStarted(): boolean {
-    if (this.locations == undefined) {
-      return false;
-    }
-
-    return this.locations.getLatLngs().length > 0;
-
+  startWorkout(){
+    this.workoutStatus = WORKOUT_STATUS.InProgress;
   }
 
-  startRegistering(){
-    this.registeringEnable = true;
+  pauseWorkout(){
+    this.workoutStatus = WORKOUT_STATUS.Paused;
   }
 
-  stopRegistering(){
-    this.registeringEnable = false;
+  resumeWorkout(){
+    this.workoutStatus = WORKOUT_STATUS.InProgress;
+  }
+
+  stopWorkout(){
+    this.workoutStatus = WORKOUT_STATUS.Ended;
   }
 
   onLocation(location, taskId) {
     console.log('- location: ', location);
 
     // Update leaflet map
-    if (this.registeringEnable) {    
+    if (this.workoutStatus == WORKOUT_STATUS.InProgress) {    
       this.locations.addLatLng([location.coords.latitude, location.coords.longitude]);
-      console.log("Location saved into list of locations");
     }
 
     if (this.lastRecenteringTimestamp == 0){
       this.map.setView([location.coords.latitude, location.coords.longitude],16);
       this.lastRecenteringTimestamp = Date.now();
     }
-    
+
     this.currentLocationLMarker.setLatLng([location.coords.latitude, location.coords.longitude]);
     this.currentLocationErrorLCircle.setLatLng([location.coords.latitude, location.coords.longitude]);
     this.currentLocationErrorLCircle.setRadius(location.coords.accuracy);

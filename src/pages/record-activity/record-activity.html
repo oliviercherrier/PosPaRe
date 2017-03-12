@@ -18,15 +18,18 @@
 </ion-content>
 
 <ion-footer style="text-align: center">
-  <button *ngIf="!this.registeringEnable" ion-button icon-only clear large style="font-size: 40px;" (click)="this.startRegistering()">
+  <button *ngIf="this.workoutStatus == WORKOUT_STATUS.NotStarted" ion-button icon-only clear large style="font-size: 40px;" (click)="this.startWorkout()">
     <ion-icon color="danger" name="radio-button-on"></ion-icon>
   </button>
-  <button *ngIf="!this.registeringEnable && this.isRegisteringStarted()" ion-button icon-only clear large style="font-size: 40px;" (click)="this.startRegistering()">
+
+  <button *ngIf="this.workoutStatus == WORKOUT_STATUS.Paused" ion-button icon-only clear large style="font-size: 40px;" (click)="this.resumeWorkout()">
+    <ion-icon color="danger" name="play"></ion-icon>
+  </button>
+  <button *ngIf="this.workoutStatus == WORKOUT_STATUS.Paused" ion-button icon-only clear large style="font-size: 40px;" (click)="this.stopWorkout()">
     <ion-icon color="danger" name="square"></ion-icon>
   </button>
 
-
-  <button *ngIf="this.registeringEnable" ion-button icon-only clear large style="font-size: 40px;" (click)="this.stopRegistering()">
+  <button *ngIf="this.workoutStatus == WORKOUT_STATUS.InProgress;" ion-button icon-only clear large style="font-size: 40px;" (click)="this.pauseWorkout()">
     <ion-icon color="danger" name="pause"></ion-icon>
   </button>
 </ion-footer>
