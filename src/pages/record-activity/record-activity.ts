@@ -4,6 +4,9 @@ import {WORKOUT_STATUS} from './workout-status';
 
 import * as L from 'leaflet';
 
+declare var require;
+
+require('leaflet-easybutton');
 
 @Component({
   selector: 'page-record-activity',
@@ -60,6 +63,12 @@ export class RecordActivityPage {
   ionViewDidEnter (){
     this.map = L.map('mapid');
     L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(this.map);
+
+    L.easyButton('fa-map-marker', (btn, map) => {
+      map.setView(this.currentLocationLMarker.getLatLng(),16);   
+    }).addTo( this.map );
+
+
     this.locations = L.polyline([], {color: 'blue'}).addTo(this.map);
     this.currentLocationLMarker =  L.circleMarker([1,1],{color: "#0000ff"}).addTo(this.map);
     this.currentLocationErrorLCircle = L.circle([1,1],{weight: 0, fillColor: "#0000ff", fillOpacity: 0.5}).addTo(this.map);
