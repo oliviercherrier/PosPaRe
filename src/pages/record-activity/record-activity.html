@@ -15,9 +15,17 @@
 
 <ion-content padding>
   <div id="mapid" style="height: 100%;"></div>
+  <ion-fab top right #fab5>
+    <button ion-fab clear small outline><ion-icon name="bicycle"></ion-icon></button>
+    <ion-fab-list side="bottom">
+      <button ion-fab clear small outline (click)="selectWorkoutType('bicycle', fab5)"><ion-icon name="bicycle"></ion-icon></button>
+      <button ion-fab clear small outline (click)="selectWorkoutType('walk', fab5)"><ion-icon name="walk"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
 
 <ion-footer style="text-align: center">
+  <!-- Display Start / Pause / Resume / Stop button depending on work out context -->
   <button *ngIf="this.workoutStatus == WORKOUT_STATUS.NotStarted" ion-button icon-only clear large style="font-size: 40px;" (click)="this.startWorkout()">
     <ion-icon color="danger" name="radio-button-on"></ion-icon>
   </button>

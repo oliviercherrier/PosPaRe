@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, FabContainer } from 'ionic-angular';
 import {WORKOUT_STATUS} from './workout-status';
 
 import * as L from 'leaflet';
@@ -128,5 +128,9 @@ export class RecordActivityPage {
   }
   onHttpFailure(response) {
     console.log('- http failure: ', response);
+  }
+
+  selectWorkoutType(network: string, fab: FabContainer) {
+    fab.close();
   }
 }
