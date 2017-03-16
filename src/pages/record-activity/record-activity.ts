@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, FabContainer } from 'ionic-angular';
+import { NavController, Platform, FabContainer, AlertController, Alert } from 'ionic-angular';
 import {WORKOUT_STATUS} from './workout-status';
 
 import * as L from 'leaflet';
@@ -28,7 +28,7 @@ export class RecordActivityPage {
 
   public nav: NavController;
   public platform: Platform;
-  constructor(public _navCtrl: NavController, public _platform: Platform) {
+  constructor(public _navCtrl: NavController, public _platform: Platform, public alertCtrl: AlertController) {
     this.nav = _navCtrl;
     this.platform = _platform;  
   }
@@ -78,6 +78,7 @@ export class RecordActivityPage {
 
   startWorkout(){
     this.workoutStatus = WORKOUT_STATUS.InProgress;
+
   }
 
   pauseWorkout(){
@@ -89,7 +90,7 @@ export class RecordActivityPage {
   }
 
   stopWorkout(){
-    this.workoutStatus = WORKOUT_STATUS.Ended;
+    this.getWorkoutPrompt().present();
   }
 
   onLocation(location, taskId) {
@@ -132,5 +133,33 @@ export class RecordActivityPage {
 
   selectWorkoutType(network: string, fab: FabContainer) {
     fab.close();
+  }
+
+  getWorkoutPrompt() {
+    return this.alertCtrl.create({
+      title: 'Congratulation',
+      message: "Enter a name for this new workout",
+      inputs: [
+        {
+          name: 'title',
+          placeholder: 'Title'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            this.nav.pop();
+          }
+        }
+      ]
+    });
+
   }
 }
