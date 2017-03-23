@@ -8,7 +8,10 @@
 <ion-navbar primary>
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     <ion-title>Mes activités</ion-title>
-    <ion-buttons end><button ion-button (click)="auth.logout()"><ion-icon item-right name="log-out"></ion-icon></button></ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="showNotifications()"><ion-icon name="notifications"></ion-icon></button>
+      <button ion-button (click)="auth.logout()"><ion-icon name="log-out"></ion-icon></button>
+    </ion-buttons>
 </ion-navbar>
 
  <ion-toolbar no-border-top>

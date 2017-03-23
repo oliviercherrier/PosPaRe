@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from '../../services/auth';
+import {NotificationsPage} from '../notifications/notifications';
 import { NavController, NavParams } from 'ionic-angular';
 
 /*
@@ -16,9 +17,11 @@ import { NavController, NavParams } from 'ionic-angular';
 
 export class StatisticsPage {
   public auth: AuthService;
+  public nav: NavController;
 
-  constructor(public _auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _auth: AuthService, public _navCtrl: NavController, public navParams: NavParams) {
     this.auth = _auth;
+    this.nav = _navCtrl;
 
     this.mumyWeightChartOptions = {
       title: {
@@ -195,7 +198,11 @@ export class StatisticsPage {
   saveMumyProgressBar(chartInstance) {
       this.mumyProgressBar = chartInstance;
   }
-  
+
+  showNotifications() {
+    this.nav.push(NotificationsPage);
+  }
+
   mumyWeightChart : {};
   mumyWeightChartOptions: {};
 
