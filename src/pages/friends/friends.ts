@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import {AuthService} from '../../services/auth';
 
 import {NotificationsPage} from '../notifications/notifications';
+import {AddFriendsPage} from'../add-friends/add-friends';
+import {RequestFriendshipPage} from'../request-friendship/request-friendship';
 
 @Component({
   selector: 'page-friends',
@@ -11,9 +13,8 @@ import {NotificationsPage} from '../notifications/notifications';
 export class FriendsPage {
 
   friends: Array<{name: string}>;
-  public nav: NavController;
-  constructor(private auth: AuthService, private _navCtrl: NavController) {
-    this.nav = _navCtrl;
+
+  constructor(public auth: AuthService, public navCtrl: NavController,  public alertCtrl: AlertController) {
 
     this.friends = [];
     this.friends.push({name: 'Anne Perdrillat'});
@@ -26,7 +27,25 @@ export class FriendsPage {
     });*/
   }
 
-  showNotifications() {
-    this.nav.push(NotificationsPage);
+  notificationsTapped() {
+    this.navCtrl.push(NotificationsPage);
   }
+
+  addFriendsTapped(){
+    this.navCtrl.push(AddFriendsPage);
+  }
+
+  inviteTapped(){
+    let alert = this.alertCtrl.create({
+      title: 'Develop me',
+      subTitle: 'If you think it is relevant for GO LIVE!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  askForFriendsRequestTapped(){
+    this.navCtrl.push(RequestFriendshipPage);
+  }
+
 }

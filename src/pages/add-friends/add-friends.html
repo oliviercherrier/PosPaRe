@@ -1,0 +1,47 @@
+<!--
+  Generated template for the AddFriends page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ajouter des amis</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar placeholder="Nom, e-mail ou numero de téléphone" ></ion-searchbar>
+
+
+  <ion-list no-lines padding>
+    <ion-item (click)="contactTapped()">
+      <ion-icon name="book" item-left></ion-icon>
+      <h2>Contacts</h2>
+      <h3>Recherche des amis parmi tes contacts</h3>
+    </ion-item>
+    <ion-item (click)="gmailTapped()">
+      <ion-icon name="google" md="logo-google" item-left></ion-icon>
+      <h2>Gmail</h2>
+      <h3>Recherche tes contacts Gmail</h3>
+    </ion-item>
+    <ion-item (click)="twitterTapped()">
+      <ion-icon name="twitter" md="logo-twitter" item-left></ion-icon>
+      <h2>Twitter</h2>
+      <h3>Recherche tes contacts Twitter</h3>
+    </ion-item>
+    <ion-item (click)="inviteTapped()">
+      <ion-icon name="mail" item-left></ion-icon>
+      <h2>Inviter</h2>
+      <h3>Inviter tes ami(e)s à s'inscrire sur PosPaRe</h3>
+    </ion-item>
+    <ion-item (click)="promoteTapped()">
+      <ion-icon name="megaphone" item-left></ion-icon>
+      <h2>Promouvoir</h2>
+      <h3>Promeus ton PosPaRe sur d'autres réseaux</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>

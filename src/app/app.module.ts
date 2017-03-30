@@ -15,6 +15,9 @@ import {RecordActivityPage} from '../pages/record-activity/record-activity';
 import {StatisticsPage} from '../pages/statistics/statistics';
 import { ChartModule } from 'angular2-highcharts';
 import {NotificationsPage} from '../pages/notifications/notifications';
+import {AddFriendsPage} from'../pages/add-friends/add-friends';
+import {RequestFriendshipPage} from'../pages/request-friendship/request-friendship';
+
 
 let storage: Storage = new Storage();
 
@@ -35,8 +38,10 @@ export function getAuthHttp(http) {
     ListOfActivitiesPage,
     ProfilePage,
     RecordActivityPage,
-    StatisticsPage  ,
-    NotificationsPage
+    StatisticsPage,
+    NotificationsPage,
+    AddFriendsPage,
+    RequestFriendshipPage
   ],
   // Module used into HTML code
   imports: [
@@ -53,7 +58,9 @@ export function getAuthHttp(http) {
     ProfilePage,
     RecordActivityPage,
     StatisticsPage,
-    NotificationsPage
+    NotificationsPage,
+    AddFriendsPage,
+    RequestFriendshipPage
   ],
   providers: [
     AuthService,
