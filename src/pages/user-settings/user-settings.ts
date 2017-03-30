@@ -8,20 +8,20 @@ import { NavController, NavParams } from 'ionic-angular';
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html'
+  selector: 'page-user-settings',
+  templateUrl: 'user-settings.html'
 })
-export class ProfilePage {
+export class UserSettingsPage {
   
-  private profile = {};
+  private userSettings = {};
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+    console.log('ionViewDidLoad UserSettingsPage');
   }
 
   logForm() {
-    console.log(this.profile)
+    console.log(this.userSettings)
   }
 }

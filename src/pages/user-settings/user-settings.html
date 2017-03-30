@@ -7,7 +7,7 @@
 <ion-header>
 
 <ion-navbar primary>
-    <ion-title>Mon profile</ion-title>
+    <ion-title>Mes paramètres</ion-title>
 </ion-navbar>
 
 </ion-header>
@@ -17,11 +17,11 @@
   <form (ngSubmit)="logForm()">
     <ion-item>
       <ion-label style="width: 100px">Nom</ion-label>
-      <ion-input type="text" [(ngModel)]="profile.lastname" name="lastname"></ion-input>
+      <ion-input type="text" [(ngModel)]="userSettings.lastname" name="lastname"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label style="width: 100px">Prénom</ion-label>
-      <ion-input type="text"  [(ngModel)]="profile.firstname" name="firstname"></ion-input>
+      <ion-input type="text"  [(ngModel)]="userSettings.firstname" name="firstname"></ion-input>
     </ion-item>
     <button ion-button type="submit" block>Sauvegarder</button>
   </form>

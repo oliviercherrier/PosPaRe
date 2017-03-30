@@ -10,7 +10,7 @@ import { MyApp } from './app.component';
 import { FriendsPage } from '../pages/friends/friends';
 import { HomePage } from '../pages/home/home';
 import {ListOfActivitiesPage} from '../pages/list-of-activities/list-of-activities';
-import {ProfilePage} from '../pages/profile/profile';
+import {UserSettingsPage} from '../pages/user-settings/user-settings';
 import {RecordActivityPage} from '../pages/record-activity/record-activity';
 import {StatisticsPage} from '../pages/statistics/statistics';
 import { ChartModule } from 'angular2-highcharts';
@@ -36,7 +36,7 @@ export function getAuthHttp(http) {
     FriendsPage,
     HomePage,
     ListOfActivitiesPage,
-    ProfilePage,
+    UserSettingsPage,
     RecordActivityPage,
     StatisticsPage,
     NotificationsPage,
@@ -55,7 +55,7 @@ export function getAuthHttp(http) {
     FriendsPage,
     HomePage,
     ListOfActivitiesPage,
-    ProfilePage,
+    UserSettingsPage,
     RecordActivityPage,
     StatisticsPage,
     NotificationsPage,
