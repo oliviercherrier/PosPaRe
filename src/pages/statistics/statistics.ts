@@ -17,12 +17,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 
 export class StatisticsPage {
+
+
+
   public auth: AuthService;
   public nav: NavController;
+  public account: string;
+
 
   constructor(public _auth: AuthService, public _navCtrl: NavController, public navParams: NavParams) {
     this.auth = _auth;
     this.nav = _navCtrl;
+    this.account = "Lucie";
 
     this.mumyProgressBarOptions = {
         chart: {
@@ -120,6 +126,7 @@ export class StatisticsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StatisticsPage');
+
   }
 
   saveMumyProgressBar(chartInstance) {

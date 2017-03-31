@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 /*
   Generated class for the StatisticsChart component.
 
@@ -8,9 +7,11 @@ import { Component } from '@angular/core';
 */
 @Component({
   selector: 'weight-charts',
-  templateUrl: 'weight-charts.html'
+  templateUrl: 'weight-charts.html',
 })
 export class WeightChartsComponent {
+  @Input('account') account: string;
+
   mumyWeightChart : {};
   mumyWeightChartOptions: {};
 
@@ -18,6 +19,7 @@ export class WeightChartsComponent {
   babyWeightChartOptions: {};
 
   constructor() {
+
     this.mumyWeightChartOptions = {
       title: {
           text: undefined
