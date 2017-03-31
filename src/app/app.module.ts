@@ -17,7 +17,7 @@ import { ChartModule } from 'angular2-highcharts';
 import {NotificationsPage} from '../pages/notifications/notifications';
 import {AddFriendsPage} from'../pages/add-friends/add-friends';
 import {RequestFriendshipPage} from'../pages/request-friendship/request-friendship';
-
+import {WeightChartsComponent} from '../components/weight-charts/weight-charts'
 
 let storage: Storage = new Storage();
 
@@ -41,7 +41,8 @@ export function getAuthHttp(http) {
     StatisticsPage,
     NotificationsPage,
     AddFriendsPage,
-    RequestFriendshipPage
+    RequestFriendshipPage,
+    WeightChartsComponent
   ],
   // Module used into HTML code
   imports: [

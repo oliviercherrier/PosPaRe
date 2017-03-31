@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth';
 import {NotificationsPage} from '../notifications/notifications';
 import { NavController, NavParams } from 'ionic-angular';
 
+
 /*
   Generated class for the StatisticsPage page.
 
@@ -22,72 +23,6 @@ export class StatisticsPage {
   constructor(public _auth: AuthService, public _navCtrl: NavController, public navParams: NavParams) {
     this.auth = _auth;
     this.nav = _navCtrl;
-
-    this.mumyWeightChartOptions = {
-      title: {
-          text: undefined
-      },
-      chart: {
-          zoomType: 'x'
-      },
-      credits: {
-        enabled: false
-      },
-      legend: {
-        enabled: false
-      },
-      xAxis: {
-        lineWidth: 0,
-        minorGridLineWidth: 0,
-        lineColor: 'transparent',      
-        minorTickLength: 0,
-        tickLength: 0,
-        gridLineWidth: 0,
-      },
-      yAxis: {
-        max: 78, 
-        min: 75,
-        title: {
-            text: ''
-        }
-      },
-      series: [
-        {name: 'Poids', data: [77,78,76,75]}
-      ]
-    };
-
-    this.babyWeightChartOptions = {
-      title: {
-          text: undefined
-      },
-      chart: {
-          zoomType: 'x'
-      },
-      credits: {
-        enabled: false
-      },
-      legend: {
-        enabled: false
-      },
-      xAxis: {
-        lineWidth: 0,
-        minorGridLineWidth: 0,
-        lineColor: 'transparent',      
-        minorTickLength: 0,
-        tickLength: 0,
-        gridLineWidth: 0,
-      },
-      yAxis: {
-        max: 10, 
-        min: 8,
-        title: {
-            text: ''
-        }
-      },
-      series: [
-        {name: 'Poids', data: [8,9,10,10]}
-      ]
-    };
 
     this.mumyProgressBarOptions = {
         chart: {
@@ -187,14 +122,6 @@ export class StatisticsPage {
     console.log('ionViewDidLoad StatisticsPage');
   }
 
-  saveMumyWeightChart(chartInstance) {
-      this.mumyWeightChart = chartInstance;
-  }
-
-  saveBabyWeightChart(chartInstance) {
-      this.babyWeightchart = chartInstance;
-  }
-
   saveMumyProgressBar(chartInstance) {
       this.mumyProgressBar = chartInstance;
   }
@@ -202,12 +129,6 @@ export class StatisticsPage {
   showNotifications() {
     this.nav.push(NotificationsPage);
   }
-
-  mumyWeightChart : {};
-  mumyWeightChartOptions: {};
-
-  babyWeightchart : {};
-  babyWeightChartOptions: {};
 
   mumyProgressBar: {};
   mumyProgressBarOptions: {};

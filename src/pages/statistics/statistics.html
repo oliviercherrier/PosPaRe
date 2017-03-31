@@ -15,40 +15,9 @@
 </ion-navbar>
 </ion-header>
 <ion-content>
+  <weight-charts></weight-charts>
 
   <ion-grid>
-    <ion-row>
-      <ion-col> <!-- Column mumy -->
-        <ion-row center> <!-- Row image & graph -->
-          <ion-col>
-            <img src="assets/img/fatigue-example.png" height= "100" width="100" />
-          </ion-col>
-          <ion-col width-75>
-            <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 120px"></chart>
-          </ion-col>
-        </ion-row>
-        <ion-row center> <!-- Row Badges -->
-          <ion-col text-center>
-            <p> Badges Maman </p>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-      <ion-col> <!-- Column baby -->
-        <ion-row center> <!-- Row image & graph -->
-          <ion-col>
-         <img src="assets/img/baby-icon.png" height= "80" width="100"/>
-          </ion-col>
-          <ion-col width-75>
-            <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" style="height: 120px"></chart>
-          </ion-col>
-        </ion-row>
-        <ion-row center> <!-- Row Badges -->
-          <ion-col text-center>
-            <p> Badges Baby </p>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
     <ion-row> <!-- Progress bar -->
       <ion-col>
         <span >
@@ -57,6 +26,8 @@
         <chart [options]="mumyProgressBarOptions" (load)="saveMumyProgressBar($event.context)" style="height: 80px;"></chart>
       </ion-col>
     </ion-row>
+  </ion-grid>
+  <ion-grid>
     <ion-row> <!-- Activity last 4 weeks -->
       <ion-col>
         <span>4 dernières semaines</span>
