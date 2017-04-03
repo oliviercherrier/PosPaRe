@@ -18,6 +18,8 @@ import {NotificationsPage} from '../pages/notifications/notifications';
 import {AddFriendsPage} from'../pages/add-friends/add-friends';
 import {RequestFriendshipPage} from'../pages/request-friendship/request-friendship';
 import {WeightChartsComponent} from '../components/weight-charts/weight-charts'
+import {ProgressBarComponent} from '../components/progress-bar/progress-bar'
+import {LastWeeksSummaryComponent} from '../components/last-weeks-summary/last-weeks-summary'
 
 let storage: Storage = new Storage();
 
@@ -42,7 +44,9 @@ export function getAuthHttp(http) {
     NotificationsPage,
     AddFriendsPage,
     RequestFriendshipPage,
-    WeightChartsComponent
+    WeightChartsComponent,
+    ProgressBarComponent,
+    LastWeeksSummaryComponent
   ],
   // Module used into HTML code
   imports: [

@@ -1,0 +1,17 @@
+<!--
+  Generated template for the ProgressBar component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+<ion-grid>
+  <ion-row> <!-- Progress bar -->
+    <ion-col>
+      <span >
+        Ce mois ci <b>4 heures 14</b> sur un objectif de 8 heures:
+      </span> 
+      <chart [options]="mumyProgressBarOptions" (load)="saveMumyProgressBar($event.context)" style="height: 80px;"></chart>
+    </ion-col>
+  </ion-row>
+</ion-grid>
