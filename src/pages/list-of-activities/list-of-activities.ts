@@ -47,6 +47,9 @@ export class ListOfActivitiesPage {
     }
   }
 
+  activityClicked(activity){
+    
+  }
   showNotifications() {
     this.nav.push(NotificationsPage);
   }
