@@ -20,6 +20,7 @@ import {RequestFriendshipPage} from'../pages/request-friendship/request-friendsh
 import {WeightChartsComponent} from '../components/weight-charts/weight-charts'
 import {ProgressBarComponent} from '../components/progress-bar/progress-bar'
 import {LastWeeksSummaryComponent} from '../components/last-weeks-summary/last-weeks-summary'
+import {ProfilePage} from'../pages/profile/profile';
 
 let storage: Storage = new Storage();
 
@@ -46,7 +47,8 @@ export function getAuthHttp(http) {
     RequestFriendshipPage,
     WeightChartsComponent,
     ProgressBarComponent,
-    LastWeeksSummaryComponent
+    LastWeeksSummaryComponent,
+    ProfilePage
   ],
   // Module used into HTML code
   imports: [
@@ -65,7 +67,8 @@ export function getAuthHttp(http) {
     StatisticsPage,
     NotificationsPage,
     AddFriendsPage,
-    RequestFriendshipPage
+    RequestFriendshipPage,
+    ProfilePage
   ],
   providers: [
     AuthService,

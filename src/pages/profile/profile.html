@@ -1,0 +1,59 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- Avatar and name -->
+  <ion-grid>
+    <ion-row >  
+      <ion-col width-20>
+        <ion-icon style="font-size: 400%" name="person"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <h4 style = "padding: 0px; margin: 0px">{{curFriend.name}}</h4>
+        <h6 style = "display: inline">Liverdy-En-Brie, Île de France</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row center><!-- Subscription -->
+      <ion-col text-center>
+        39 <BR> ABONNEMENTS
+      </ion-col>
+      <ion-col text-center>
+        30 <BR> ABONNES
+      </ion-col>
+      <ion-col text-center>
+        <ion-icon style="font-size: 200%" name="person-add"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Images -->
+  <ion-slides [slidesPerView] = 2 [spaceBetween] = 4 style="max-height: 20vh !important;"> 
+    <ion-slide>
+      <img src="assets/tmp/profile-images/DSC_8618.JPG" />
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/tmp/profile-images/DSC_8617.JPG"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/tmp/profile-images/DSC_8618.JPG"/>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Progress bar -->
+  <progress-bar></progress-bar>
+  <!-- 4 Last weeks -->
+ <last-weeks-summary></last-weeks-summary>
+ 
+</ion-content>

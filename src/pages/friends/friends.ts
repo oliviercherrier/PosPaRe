@@ -5,6 +5,7 @@ import {AuthService} from '../../services/auth';
 import {NotificationsPage} from '../notifications/notifications';
 import {AddFriendsPage} from'../add-friends/add-friends';
 import {RequestFriendshipPage} from'../request-friendship/request-friendship';
+import {ProfilePage} from '../profile/profile';
 
 @Component({
   selector: 'page-friends',
@@ -21,10 +22,10 @@ export class FriendsPage {
     this.friends.push({name: "Julie Morel"});
   }
 
-  friendTapped(event, item) {
-    /*this.navCtrl.push(ItemDetailsPage, {
-      item: item
-    });*/
+  friendTapped(event, friend) {
+    this.navCtrl.push(ProfilePage, {
+      friend: friend
+    });
   }
 
   notificationsTapped() {
