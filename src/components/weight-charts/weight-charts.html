@@ -13,7 +13,7 @@
             <img src="assets/img/fatigue-example.png" height= "100" width="100" />
           </ion-col>
           <ion-col width-75>
-            <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 120px"></chart>
+            <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" (click)="displayDetailledStats()" style="height: 120px"></chart>
           </ion-col>
         </ion-row>
         <ion-row center> <!-- Row Badges -->
@@ -28,7 +28,7 @@
          <img src="assets/img/baby-icon.png" height= "80" width="100"/>
           </ion-col>
           <ion-col width-75>
-            <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" style="height: 120px"></chart>
+            <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" (click)="displayDetailledStats()"  style="height: 120px"></chart>
           </ion-col>
         </ion-row>
         <ion-row center> <!-- Row Badges -->

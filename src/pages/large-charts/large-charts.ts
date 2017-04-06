@@ -1,20 +1,19 @@
-import { Component, Input } from '@angular/core';
-import { NavController} from 'ionic-angular';
-
-import {LargeChartsPage} from '../../pages/large-charts/large-charts'
+import { Component } from '@angular/core';
+import { NavController, NavParams, Platform } from 'ionic-angular';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 /*
-  Generated class for the StatisticsChart component.
+  Generated class for the LargeCharts page.
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
 */
 @Component({
-  selector: 'weight-charts',
-  templateUrl: 'weight-charts.html',
+  selector: 'page-large-charts',
+  templateUrl: 'large-charts.html',
+  providers: [ScreenOrientation]
 })
-export class WeightChartsComponent {
-  @Input('account') account: string;
+export class LargeChartsPage {
 
   mumyWeightChart : {};
   mumyWeightChartOptions: {};
@@ -22,7 +21,10 @@ export class WeightChartsComponent {
   babyWeightchart : {};
   babyWeightChartOptions: {};
 
-  constructor( public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private screenOrientation: ScreenOrientation, public platform: Platform) {
+    platform.ready().then(() => {
+      //this.screenOrientation.lock('landscape');
+    });
 
     this.mumyWeightChartOptions = {
       title: {
@@ -46,14 +48,14 @@ export class WeightChartsComponent {
         gridLineWidth: 0,
       },
       yAxis: {
-        max: 78, 
+        max: 82, 
         min: 75,
         title: {
             text: ''
         }
       },
       series: [
-        {name: 'Poids', data: [77,78,76,75]}
+        {name: 'Poids', data: [82,81,79,80,79,78,77,78,76,75]}
       ]
     };
 
@@ -80,15 +82,23 @@ export class WeightChartsComponent {
       },
       yAxis: {
         max: 10, 
-        min: 8,
+        min: 4,
         title: {
             text: ''
         }
       },
       series: [
-        {name: 'Poids', data: [8,9,10,10]}
+        {name: 'Poids', data: [4,5,6,7,7,8,9,10,10]}
       ]
     };
+  }
+  
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LargeChartsPage');
+  }
+
+  ionViewWillLeave(){
+    // this.screenOrientation.unlock();
   }
 
   saveMumyWeightChart(chartInstance) {
@@ -99,7 +109,4 @@ export class WeightChartsComponent {
       this.babyWeightchart = chartInstance;
   }
 
-  displayDetailledStats(){
-    this.navCtrl.push(LargeChartsPage);
-  }
 }

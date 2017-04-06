@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, FabContainer, AlertController, Alert } from 'ionic-angular';
+import { NavController, Platform, FabContainer, AlertController} from 'ionic-angular';
 import {WORKOUT_STATUS} from './workout-status';
 
 import * as L from 'leaflet';
