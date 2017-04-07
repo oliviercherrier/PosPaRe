@@ -7,30 +7,46 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Our detailled statistics</ion-title>
+    <ion-title>Nos statistiques détaillées</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
   <ion-grid>
     <ion-row>
-      <ion-col width-10>
-        <img src="assets/img/fatigue-example.png" height= "100" width="100" />
+      <ion-col [attr.width-90]="inEditMode ? true: null">
+        <div  style="text-align: center; margin-top: 5px"><span style="text-align: center; font-weight: bold"> Vous </span></div>
+        <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 200px"></chart>
       </ion-col>
-      <ion-col width-90>
-        <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" (click)="displayDetailledStats()" style="height: 120px"></chart>
+      <div *ngIf="inEditMode" >
+      <ion-col width-10 *ngIf="inEditMode" >
+        p
+      </ion-col>
+      </div>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      <div style="text-align: right; margin-top: -27px;  margin-right: -25px;">
+        <button ion-button item-right clear (click)="addWeightEvolution()"> 
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </div>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col width-10>
-        <img src="assets/img/baby-icon.png" height= "80" width="100"/>
+      <ion-col [attr.width-90]="inEditMode ? true: null">
+        <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)"  style="height: 200px"></chart>
+        <div  style="text-align: center"><span style="text-align: center; font-weight: bold; width: 100%"> Oriane </span></div>
       </ion-col>
-      <ion-col width-90>
-        <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" (click)="displayDetailledStats()"  style="height: 120px"></chart>
-      </ion-col>  
+      <div *ngIf="inEditMode " >
+      <ion-col width-10  *ngIf="inEditMode ? true: null">
+        p
+      </ion-col>
+      </div>
     </ion-row>
+    
   </ion-grid>
 </ion-content>
 

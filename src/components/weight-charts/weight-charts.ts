@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavController} from 'ionic-angular';
+import { ChartModule } from 'angular2-highcharts';
 
 import {LargeChartsPage} from '../../pages/large-charts/large-charts'
 
@@ -16,13 +17,17 @@ import {LargeChartsPage} from '../../pages/large-charts/large-charts'
 export class WeightChartsComponent {
   @Input('account') account: string;
 
-  mumyWeightChart : {};
+  mumyWeightChart : any;
   mumyWeightChartOptions: {};
 
-  babyWeightchart : {};
+  babyWeightchart : any;
   babyWeightChartOptions: {};
 
   constructor( public navCtrl: NavController) {
+    /*window.onresize = () => {
+      console.log("Window onresize");
+      this.babyWeightchart.redraw(); this.mumyWeightChart.redraw()
+    }*/
 
     this.mumyWeightChartOptions = {
       title: {
@@ -97,6 +102,7 @@ export class WeightChartsComponent {
 
   saveBabyWeightChart(chartInstance) {
       this.babyWeightchart = chartInstance;
+      this.babyWeightchart.redraw();
   }
 
   displayDetailledStats(){

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
+
+import {LastWeeksSummaryComponent} from '../../components/last-weeks-summary/last-weeks-summary'
+
+import {VIEW_MODE} from './view-mode';
+/** Commented because we force globbaly orientation of screen to partrait into config.xml */
+/* import { ScreenOrientation } from '@ionic-native/screen-orientation'; */
 
 /*
   Generated class for the LargeCharts page.
@@ -8,23 +13,35 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
+
+
+
 @Component({
   selector: 'page-large-charts',
   templateUrl: 'large-charts.html',
-  providers: [ScreenOrientation]
+  /** Commented because we force globbaly orientation of screen to partrait into config.xml */
+  /* providers: [ScreenOrientation]*/
 })
 export class LargeChartsPage {
 
-  mumyWeightChart : {};
+  VIEW_MODE: typeof VIEW_MODE = VIEW_MODE;
+
+  mumyWeightChart : any;
   mumyWeightChartOptions: {};
 
-  babyWeightchart : {};
+  babyWeightchart : any;
   babyWeightChartOptions: {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private screenOrientation: ScreenOrientation, public platform: Platform) {
-    platform.ready().then(() => {
-      //this.screenOrientation.lock('landscape');
-    });
+
+  private inEditMode: boolean = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams/*, private screenOrientation: ScreenOrientation*/, public platform: Platform, private alertCtrl: AlertController) {
+
+    /** Commented because we force globbaly orientation of screen to partrait into config.xml */
+    /*platform.ready().then(() => {
+      this.screenOrientation.lock('landscape');
+    });*/
 
     this.mumyWeightChartOptions = {
       title: {
@@ -93,13 +110,13 @@ export class LargeChartsPage {
     };
   }
   
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LargeChartsPage');
+  ionViewDidEnter() {
   }
 
-  ionViewWillLeave(){
-    // this.screenOrientation.unlock();
-  }
+  /** Commented because we force globbaly orientation of screen to partrait into config.xml */
+  /*ionViewWillLeave(){
+    this.screenOrientation.unlock();
+  }*/
 
   saveMumyWeightChart(chartInstance) {
       this.mumyWeightChart = chartInstance;
@@ -109,4 +126,11 @@ export class LargeChartsPage {
       this.babyWeightchart = chartInstance;
   }
 
+  addWeightEvolution(){
+    this.inEditMode = ! this.inEditMode;
+    setTimeout( () => { this.mumyWeightChart.reflow(); this.babyWeightchart.reflow();}, 1000);
+    
+    
+    console.log(this.inEditMode);
+  }
 }

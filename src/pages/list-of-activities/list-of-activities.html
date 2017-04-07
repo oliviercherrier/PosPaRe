@@ -27,24 +27,21 @@
  </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content no-padding>
   <ion-card *ngFor="let activity of activities" padding >
-    <div (click)="activityClicked(activity)">
-      <ion-item>
+    <ion-card-header (click)="activityClicked(activity)"  no-padding>
+      <ion-item text-wrap>
         <ion-icon item-left style="color: black; width: 40px; font-size: 40px" name="happy"></ion-icon>
-        <h2>Sortie à vélo matinale</h2>
+        <h2>Sortie à vélo matinale Sortie à vélo matinale</h2>
         <p style="font-size: 80%"> Olivier Cherrier</p>
-      </ion-item>    
-
-      <ion-item style="margin-top: -13px">
-        <ion-icon item-left style="color: black; width: 40px; font-size: 20px" name="bicycle"></ion-icon>
-        <h4>
-          <span >83.5 km</span>
-          <span style="margin-left: 10px">200 m</span>
-        </h4>
       </ion-item>
-    </div>
-
-    <div id="map_{{activity.id}}" style="height: 250px"></div>
+      <ion-item text-wrap style="margin-top: -13px">
+        <ion-icon item-left style=" color: black; width: 40px; font-size: 20px" name="bicycle"></ion-icon>
+        <p> <span>83.5 km</span> <span style="margin-left: 10px">200 m</span> </p>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content no-padding>
+      <div id="map_{{activity.id}}" style="height: 250px"></div>
+    </ion-card-content>
   </ion-card>
 </ion-content>
