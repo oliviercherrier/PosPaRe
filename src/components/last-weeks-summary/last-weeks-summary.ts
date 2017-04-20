@@ -12,11 +12,7 @@ import { Component } from '@angular/core';
 })
 export class LastWeeksSummaryComponent {
 
-  text: string;
-
   constructor() {
-    console.log('Hello LastWeeksSummary Component');
-    this.text = 'Hello World';
   }
 
 }
