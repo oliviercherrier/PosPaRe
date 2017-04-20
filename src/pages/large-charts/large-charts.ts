@@ -40,13 +40,6 @@ export class LargeChartsPage {
   private inEditMode: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams/*, private screenOrientation: ScreenOrientation*/, public platform: Platform, private alertCtrl: AlertController) {
-    
-
-    /** Commented because we force globbaly orientation of screen to partrait into config.xml */
-    /*platform.ready().then(() => {
-      this.screenOrientation.lock('landscape');
-    });*/
-
     this.mumyWeightChartOptions = {
       title: {
           text: undefined
@@ -92,6 +85,16 @@ export class LargeChartsPage {
             [Date.UTC(2017, 3, 17), 76],
             [Date.UTC(2017, 3, 18), 75]],
           allowPointSelect: true
+        },
+        {
+          name: 'Poids initial',  color: 'red', marker: {enabled: false}, data: [            
+          [Date.UTC(2017, 2, 21), 82],
+          [new Date().getTime(), 82]]
+        },
+        {
+          name: 'Poids cible',  color: 'green', marker: {enabled: false}, data: [            
+          [Date.UTC(2017, 2, 21), 63],
+          [new Date().getTime(), 63]]
         }
       ]
     };
