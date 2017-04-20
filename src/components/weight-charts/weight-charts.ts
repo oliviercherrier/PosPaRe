@@ -24,10 +24,6 @@ export class WeightChartsComponent {
   babyWeightChartOptions: {};
 
   constructor( public navCtrl: NavController) {
-    /*window.onresize = () => {
-      console.log("Window onresize");
-      this.babyWeightchart.redraw(); this.mumyWeightChart.redraw()
-    }*/
 
     this.mumyWeightChartOptions = {
       title: {
@@ -43,6 +39,7 @@ export class WeightChartsComponent {
         enabled: false
       },
       xAxis: {
+        type: 'datetime',
         lineWidth: 0,
         minorGridLineWidth: 0,
         lineColor: 'transparent',      
@@ -58,7 +55,12 @@ export class WeightChartsComponent {
         }
       },
       series: [
-        {name: 'Poids', data: [77,78,76,75]}
+        {name: 'Poids', data: [            
+          [Date.UTC(2017, 3, 15), 78],
+          [Date.UTC(2017, 3, 16), 77],
+          [Date.UTC(2017, 3, 17), 76],
+          [Date.UTC(2017, 3, 18), 75]]
+        }
       ]
     };
 
@@ -76,6 +78,7 @@ export class WeightChartsComponent {
         enabled: false
       },
       xAxis: {
+        type: 'datetime',
         lineWidth: 0,
         minorGridLineWidth: 0,
         lineColor: 'transparent',      
@@ -91,7 +94,11 @@ export class WeightChartsComponent {
         }
       },
       series: [
-        {name: 'Poids', data: [8,9,10,10]}
+        {name: 'Poids', data: [            
+          [Date.UTC(2017, 3, 15), 8],
+          [Date.UTC(2017, 3, 16), 9],
+          [Date.UTC(2017, 3, 17), 10],
+          [Date.UTC(2017, 3, 18), 10]]}
       ]
     };
   }
