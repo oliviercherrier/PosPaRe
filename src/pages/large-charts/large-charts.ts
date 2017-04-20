@@ -61,6 +61,11 @@ export class LargeChartsPage {
         enabled: false
       },
       xAxis: {
+        type: 'datetime',
+        dateTimeLabelFormats: { // don't display the dummy year
+            month: '%e. %b',
+            year: '%b'
+        },
         lineWidth: 0,
         minorGridLineWidth: 0,
         lineColor: 'transparent',      
@@ -76,7 +81,16 @@ export class LargeChartsPage {
       series: [
         {
           name: 'Poids', 
-          data: [82,81,79,80,79,78,77,78,76,75],
+          data: [
+            [Date.UTC(2017, 2, 21), 82],
+            [Date.UTC(2017, 2, 27), 81],
+            [Date.UTC(2017, 3, 9), 79],
+            [Date.UTC(2017, 3, 11), 80],
+            [Date.UTC(2017, 3, 13), 79],
+            [Date.UTC(2017, 3, 15), 78],
+            [Date.UTC(2017, 3, 16), 77],
+            [Date.UTC(2017, 3, 17), 76],
+            [Date.UTC(2017, 3, 18), 75]],
           allowPointSelect: true
         }
       ]
@@ -96,6 +110,11 @@ export class LargeChartsPage {
         enabled: false
       },
       xAxis: {
+        type: 'datetime',
+        dateTimeLabelFormats: { // don't display the dummy year
+            month: '%e. %b',
+            year: '%b'
+        },
         lineWidth: 0,
         minorGridLineWidth: 0,
         lineColor: 'transparent',      
@@ -108,8 +127,20 @@ export class LargeChartsPage {
             text: ''
         }
       },
-      series: [
-        {name: 'Poids', data: [4,5,6,7,7,8,9,10,10], allowPointSelect: true}
+      series: [{
+        name: 'Poids', 
+        data: [ 
+            [Date.UTC(2017, 2, 21), 4],
+            [Date.UTC(2017, 2, 27), 5],
+            [Date.UTC(2017, 3, 9), 6],
+            [Date.UTC(2017, 3, 11), 7],
+            [Date.UTC(2017, 3, 13), 7],
+            [Date.UTC(2017, 3, 15), 8],
+            [Date.UTC(2017, 3, 16), 9],
+            [Date.UTC(2017, 3, 17), 10],
+            [Date.UTC(2017, 3, 18), 10]
+        ], 
+        allowPointSelect: true}
       ]
     };
   }
@@ -151,9 +182,7 @@ export class LargeChartsPage {
         increment = 1;
         break;
       case "-1":
-        
         increment = -1;
-        console.log("increment -1" + increment)
         break;
       default:
         console.log("No Increment found for " + chart);
@@ -171,9 +200,6 @@ export class LargeChartsPage {
       default:
         console.log("No chart found for " + chart);
     }
-
-
-
   }
 
   getLastPointInChart(chart: any){
@@ -189,7 +215,8 @@ export class LargeChartsPage {
   repeatLastPointInChart(chart: any){
     // Add new point, same as last point
     let lastPoint = this.getLastPointInChart(chart);
-    chart.series[0].addPoint([lastPoint.x + 1,lastPoint.y]);
+
+    chart.series[0].addPoint([new Date().getTime(),lastPoint.y]);
     
     // Update last point image
     let newPoint = this.getLastPointInChart(chart);
