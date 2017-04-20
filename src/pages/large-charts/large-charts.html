@@ -7,29 +7,67 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Our detailled statistics</ion-title>
+    <ion-title>Nos statistiques détaillées</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
   <ion-grid>
-    <ion-row>
-      <ion-col width-10>
-        <img src="assets/img/fatigue-example.png" height= "100" width="100" />
+    <ion-row center>
+      <ion-col [attr.width-90]="inEditMode ? true: null">
+        <div  style="text-align: center; margin-top: 5px"><span style="text-align: center; font-weight: bold"> Vous </span></div>
+        <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 200px"></chart>
       </ion-col>
-      <ion-col width-90>
-        <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" (click)="displayDetailledStats()" style="height: 120px"></chart>
+      <ion-col width-10 *ngIf="inEditMode" text-center>
+          <button no-padding ion-button clear (click)='updateLastWeight("mumy","+1")'>
+            <ion-icon color="danger" name="add-circle"></ion-icon>
+          </button>
+          <div style="text-align :center">
+              <input style=" width: 100%; border-width: 0px; text-align :center" type="text" [(ngModel)]="curMumyWeight" name="mumyWeight">
+          </div>
+          <button no-padding ion-button clear (click)='updateLastWeight("mumy","-1")'> 
+            <ion-icon color="secondary" name="remove-circle"></ion-icon>
+          </button>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col width-10>
-        <img src="assets/img/baby-icon.png" height= "80" width="100"/>
-      </ion-col>
+    <ion-row center>
       <ion-col width-90>
-        <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" (click)="displayDetailledStats()"  style="height: 120px"></chart>
-      </ion-col>  
+      </ion-col>
+      <ion-col width-10 text-center>
+        <div *ngIf="!inEditMode" >
+          <button no-padding large ion-button clear (click)="addWeightEvolution()"> 
+            <ion-icon name="add-circle"></ion-icon>
+          </button>
+        </div>
+        <div *ngIf="inEditMode">
+          <button no-padding large ion-button clear (click)="deleightEvolution()"> 
+            <ion-icon  color="secondary" name="checkmark-circle"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row center>
+      <ion-col [attr.width-90]="inEditMode ? true: null">
+        <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)"  style="height: 200px">
+          <series>
+            <point (select)="onPointSelect($event)"></point>
+          </series>
+        </chart>
+        <div  style="text-align: center"><span style="text-align: center; font-weight: bold; width: 100%"> Oriane </span></div>
+      </ion-col>
+      <ion-col width-10 *ngIf="inEditMode" text-center>
+         <button no-padding ion-button clear (click)='updateLastWeight("baby","+1")'>
+            <ion-icon color="secondary" name="add-circle"></ion-icon>
+          </button>
+          <div style="text-align :center">
+              <input style=" width: 100%; border-width: 0px; text-align :center" type="text" [(ngModel)]="curBabyWeight" name="mumyWeight">
+          </div>
+          <button no-padding ion-button clear (click)='updateLastWeight("baby","-1")'> 
+            <ion-icon color="danger" name="remove-circle"></ion-icon>
+          </button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
