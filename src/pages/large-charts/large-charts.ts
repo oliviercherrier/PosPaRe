@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 
-<<<<<<< HEAD
-import {VIEW_MODE} from './view-mode';
 
 
 
-=======
+
 import {LastWeeksSummaryComponent} from '../../components/last-weeks-summary/last-weeks-summary'
 
 import {VIEW_MODE} from './view-mode';
->>>>>>> 9c34f666ab534154ca28ddad68ab27e206ff8510
+
 /** Commented because we force globbaly orientation of screen to partrait into config.xml */
 /* import { ScreenOrientation } from '@ionic-native/screen-orientation'; */
 
