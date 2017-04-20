@@ -34,7 +34,8 @@ export class ListOfActivitiesPage {
     this.activities.push({fileName: 'assets/tmp/gpx/Mollard.gpx', id:'Mollard2'});
   }
   
-  ionViewDidEnter (){
+ionViewDidEnter (){
+
       // Populate each activity div with the related activity mapsCreate one div per activity to displa
       for (let activity of this.activities){
         let my_map = L.map('map_' + activity.id);

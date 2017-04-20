@@ -24,6 +24,10 @@ export class WeightChartsComponent {
   babyWeightChartOptions: {};
 
   constructor( public navCtrl: NavController) {
+    /*window.onresize = () => {
+      console.log("Window onresize");
+      this.babyWeightchart.redraw(); this.mumyWeightChart.redraw()
+    }*/
 
     this.mumyWeightChartOptions = {
       title: {
