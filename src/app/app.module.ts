@@ -22,6 +22,7 @@ import {ProgressBarComponent} from '../components/progress-bar/progress-bar'
 import {LastWeeksSummaryComponent} from '../components/last-weeks-summary/last-weeks-summary'
 import {ProfilePage} from'../pages/profile/profile';
 import  {LargeChartsPage} from '../pages/large-charts/large-charts'
+import {LikeAndCommentsPage} from '../pages/like-and-comments/like-and-comments';
 
 let storage: Storage = new Storage();
 
@@ -50,7 +51,8 @@ export function getAuthHttp(http) {
     ProgressBarComponent,
     LastWeeksSummaryComponent,
     ProfilePage,
-    LargeChartsPage
+    LargeChartsPage,
+    LikeAndCommentsPage
   ],
   // Module used into HTML code
   imports: [
@@ -71,7 +73,8 @@ export function getAuthHttp(http) {
     AddFriendsPage,
     RequestFriendshipPage,
     ProfilePage,
-    LargeChartsPage
+    LargeChartsPage,
+    LikeAndCommentsPage
   ],
   providers: [
     AuthService,
