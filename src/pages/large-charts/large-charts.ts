@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 
-
-
-
-
 import {LastWeeksSummaryComponent} from '../../components/last-weeks-summary/last-weeks-summary'
 
-import {VIEW_MODE} from './view-mode';
+import {VIEW_MODE, HIGHCHARTS_OPTIONS} from './view-mode';
+
+declare var require;
+const Highcharts = require('highcharts');
 
 /** Commented because we force globbaly orientation of screen to partrait into config.xml */
 /* import { ScreenOrientation } from '@ionic-native/screen-orientation'; */
@@ -44,6 +43,8 @@ export class LargeChartsPage {
   private inEditMode: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams/*, private screenOrientation: ScreenOrientation*/, public platform: Platform, private alertCtrl: AlertController) {
+    Highcharts.setOptions(HIGHCHARTS_OPTIONS);
+
     this.mumyWeightChartOptions = {
       title: {
           text: undefined

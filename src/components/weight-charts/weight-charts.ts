@@ -4,6 +4,11 @@ import { ChartModule } from 'angular2-highcharts';
 
 import {LargeChartsPage} from '../../pages/large-charts/large-charts'
 
+import {VIEW_MODE, HIGHCHARTS_OPTIONS} from '../../pages/large-charts/view-mode';
+
+declare var require;
+const Highcharts = require('highcharts');
+
 /*
   Generated class for the StatisticsChart component.
 
@@ -24,10 +29,8 @@ export class WeightChartsComponent {
   babyWeightChartOptions: {};
 
   constructor( public navCtrl: NavController) {
-    /*window.onresize = () => {
-      console.log("Window onresize");
-      this.babyWeightchart.redraw(); this.mumyWeightChart.redraw()
-    }*/
+
+    Highcharts.setOptions(HIGHCHARTS_OPTIONS);
 
     this.mumyWeightChartOptions = {
       title: {
