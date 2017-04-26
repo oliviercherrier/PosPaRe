@@ -5,14 +5,23 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>likeAndComments</ion-title>
+    <ion-title>
+      <h4>Discussion</h4>
+      <h6>Sortie à vélo matinale Sortie à vélo matinale</h6>
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-navbar style = "display: inline;">
+    <ion-item style = "border-width: 0px; background-color: green">
+      <button ion-button item-left clear (click)="addFriendsTapped()">
+        <ion-icon style="font-size: 180%; background-color:yellow" outline name='thumbs-up'></ion-icon>
+      </button>
+      <ion-label item-left style="font-size: 80%; background-color:blue">2</ion-label>
+      <ion-icon item-left name="person" style="background-color:red"></ion-icon>
+    </ion-item>
+  </ion-navbar>
 </ion-content>
