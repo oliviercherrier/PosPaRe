@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the LikeAndComments page.
@@ -13,10 +13,29 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LikeAndCommentsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LikeAndCommentsPage');
   }
 
+  addCommentTapped(){
+    let prompt = this.alertCtrl.create({
+      inputs: [
+        {
+          name: 'title',
+          placeholder: 'Ajouter un commentaire'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Ajouter',
+          handler: data => {
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
 }
