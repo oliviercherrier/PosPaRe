@@ -7,12 +7,41 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>notifications</ion-title>
+    <ion-title>Mes notifications</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list text-wrap>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://avatars.io/facebook/joshua.morony" />
+      </ion-avatar>
+      <h6>Josh Morony vous ont félicité pour Sortie à Vélo Matinale</h6>
+      <h6 style="font-size: 60%">Il y a 2 jours</h6>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://avatars.io/facebook/joshua.morony" />
+      </ion-avatar>
+      <h6>Olivier Cherrier vous ont commenté Sortie à Vélo Matinale</h6>
+      <h6 style="font-size: 60%">Il y a 3 jours</h6>
+    </ion-item>
+    <ion-item (click)="displayRequestFriendship()">
+      <ion-avatar item-left>
+        <img src="https://avatars.io/facebook/joshua.morony" />
+      </ion-avatar>
+      <h6>Olivier Cherrier demande à être votre ami</h6>
+      <h6 style="font-size: 60%">Il y a 4 jours</h6>
+    </ion-item>
+    <ion-item (click)="displayProfile()">
+      <ion-avatar item-left>
+        <img src="https://avatars.io/facebook/joshua.morony" />
+      </ion-avatar>
+      <h6>Vous suivez maintenant Olivier Cherrier</h6>
+      <h6 style="font-size: 60%">Il y a 4 jours</h6>
+    </ion-item>
+  </ion-list>
 </ion-content>

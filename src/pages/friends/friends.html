@@ -21,21 +21,21 @@
   <ion-searchbar placeholder="Recherche des amis" ></ion-searchbar>
   <div style="text-align: center">
     <ion-buttons middle>
-      <button large style="text-transform: none;" ion-button color="light" (click)="askForFriendsRequestTapped()">
+      <button style="text-transform: none;" ion-button color="light" (click)="askForFriendsRequestTapped()">
         <div>
           <ion-icon name='person'></ion-icon>
           <br>
           <label  style="font-size: 60%">Demandes d'amitié</label>
         </div>
       </button>
-      <button large style="text-transform: none;" ion-button color="danger" (click)="addFriendsTapped()">
+      <button style="text-transform: none;" ion-button color="danger" (click)="addFriendsTapped()">
         <div>
           <ion-icon name='person-add'></ion-icon>
           <br>
           <label  style="font-size: 60%">Ajouter des amis</label>
         </div>
       </button>
-      <button large style="text-transform: none;" ion-button color="danger" (click)="inviteTapped()">
+      <button style="text-transform: none;" ion-button color="danger" (click)="inviteTapped()">
         <div>
           <ion-icon name='mail'></ion-icon>
           <br>
@@ -45,11 +45,14 @@
     </ion-buttons>
   </div>
   <div>
+    
   <ion-list no-lines padding>
     <ion-item-group>
       <ion-item-divider color="light">Mes Amis</ion-item-divider>
       <ion-item  *ngFor="let friend of friends" (click)="friendTapped($event, friend)">
-        <ion-icon name="person" item-left></ion-icon>
+          <ion-avatar  item-left><!---->
+            <img src="assets/img/lucile.jpg" />
+          </ion-avatar>
         {{friend.name}}
       </ion-item>
     </ion-item-group>

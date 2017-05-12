@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import {RequestFriendshipPage} from '../request-friendship/request-friendship';
+import {ProfilePage} from '../profile/profile';
+
 /*
   Generated class for the Notifications page.
 
@@ -19,4 +22,13 @@ export class NotificationsPage {
     console.log('ionViewDidLoad NotificationsPage');
   }
 
+  displayRequestFriendship(){
+      this.navCtrl.push(RequestFriendshipPage);
+  }
+
+  displayProfile(){
+    this.navCtrl.push(ProfilePage, {
+      friend: {name:  "Olivier Cherrier"}
+    });
+  }
 }

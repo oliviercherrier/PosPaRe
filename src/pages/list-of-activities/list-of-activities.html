@@ -31,7 +31,9 @@
   <ion-card *ngFor="let activity of activities" padding >
     <ion-card-header (click)="activityClicked(activity)"  no-padding>
       <ion-item text-wrap>
-        <ion-icon item-left style="color: black; width: 40px; font-size: 40px" name="happy"></ion-icon>
+        <ion-avatar item-left>
+          <img style="width: 100% !important; height : 100% !important; max-width: 50px !important; max-height: 50px !important;" src="assets/img/lucile.jpg" />
+        </ion-avatar>
         <h2>Sortie à vélo matinale Sortie à vélo matinale</h2>
         <p style="font-size: 80%"> Olivier Cherrier</p>
       </ion-item>

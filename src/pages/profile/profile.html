@@ -52,12 +52,12 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col width-50 no-padding no-margin>
+      <ion-col width-50 no-padding no-margin text-center>
         <!-- Baby: badges -->
         <img style="width: 30px" src="assets/img/badge-bebe-1.jpg" />
         <img style="width: 30px" src="assets/img/badge-bebe-2.jpg" />
       </ion-col>
-      <ion-col width-50  no-padding no-margin>
+      <ion-col width-50  no-padding no-margin text-center>
         <!-- Mumy: badges -->
         <img style="width: 30px" src="assets/img/icon-sport-1.jpg" />
         <img style="width: 30px" src="assets/img/icon-sport-2.jpg" />
@@ -86,4 +86,11 @@
   <!-- 4 Last weeks -->
   <div style="margin-top: 10px;"><last-weeks-summary ></last-weeks-summary></div>
  
+  <!-- Recent activities -->
+    <ion-item (click)="displayRecentActivities()" style="border-width: 0.5px; border-style: solid none solid none; border-color:lightgrey">
+      <ion-icon name="list" item-left></ion-icon>
+        Activités récentes
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+
 </ion-content>
