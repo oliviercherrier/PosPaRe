@@ -13,19 +13,9 @@
 </ion-header>
 
 
-<ion-content padding>
-  <!-- Avatar and name -->
-  <ion-grid>
-    <ion-row >  
-      <ion-col width-20>
-        <ion-icon style="font-size: 400%" name="person"></ion-icon>
-      </ion-col>
-      <ion-col>
-        <h4 style = "padding: 0px; margin: 0px">{{curFriend.name}}</h4>
-        <h6 style = "display: inline">Liverdy-En-Brie, Île de France</h6>
-      </ion-col>
-    </ion-row>
-    <ion-row center><!-- Subscription -->
+<ion-content >
+  <ion-grid no-padding>
+    <ion-row style="font-size: 80%" center><!-- Subscription -->
       <ion-col text-center>
         39 <BR> ABONNEMENTS
       </ion-col>
@@ -38,24 +28,63 @@
     </ion-row>
   </ion-grid>
 
-  <!-- Images -->
-  <ion-slides [slidesPerView] = 2 [spaceBetween] = 4 style="max-height: 20vh !important;"> 
+  <ion-grid >
+    <ion-row no-padding no-margin center >
+      <ion-col no-padding no-margin width-50 >
+        <!-- Baby: Avatar, name and badges -->
+        <ion-item  no-lines no-padding no-margin>
+          <ion-avatar style="margin: 0px 5px 0px 0px;  padding: 0px 0px 0px 0px;" item-left><!---->
+            <img style="width: 100% !important; height : 100% !important; max-width: 50px !important; max-height: 50px !important;" src="assets/img/bebe_1.jpg" />
+          </ion-avatar>
+          <h2 style="margin: 0px 0px 0px 0px;  padding: 0px 0px 0px 0px;">Oriane </h2>
+          <h6 style="font-size: 50%; margin: 0px 0px 0px 0px;  padding: 0px 0px 0px 0px;">3 mois, 7 kg 500 </h6>
+        </ion-item>
+      </ion-col>
+      <ion-col  no-padding no-margin width-50 >
+        <!-- Baby: Avatar, name and badges -->
+        <ion-item   no-lines no-padding no-margin>
+          <ion-avatar style=" border-width: 1px;  margin: 0px 5px 0px 0px;  padding: 0px 0px 0px 0px;" item-left><!--style="width: 100% !important; height : 100% !important; max-width: 50px !important; max-height: 50px !important;"-->
+            <img style="width: 100% !important; height : 100% !important; max-width: 50px !important; max-height: 50px !important;" src="assets/img/lucile.jpg" />
+          </ion-avatar>
+          <h2 style="margin: 0px 0px 0px 0px;  padding: 0px 0px 0px 0px;">{{curFriend.name}}</h2>
+          <h6 style="font-size: 50%; margin: 0px 0px 0px 0px;  padding: 0px 0px 0px 0px;">Liverdy-En-Brie, Île de France</h6>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50 no-padding no-margin>
+        <!-- Baby: badges -->
+        <img style="width: 30px" src="assets/img/badge-bebe-1.jpg" />
+        <img style="width: 30px" src="assets/img/badge-bebe-2.jpg" />
+        <img style="width: 30px" src="assets/img/badge-bebe-3.jpg" />
+      </ion-col>
+      <ion-col width-50  no-padding no-margin>
+        <!-- Mumy: badges -->
+        <img style="width: 30px" src="assets/img/badge-bebe-1.jpg" />
+        <img style="width: 30px" src="assets/img/badge-bebe-2.jpg" />
+        <img style="width: 30px" src="assets/img/badge-bebe-3.jpg" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-slides [slidesPerView] = 2 [spaceBetween] = 4 style="margin-top: 10px; max-height: 15vh !important;"> 
     <ion-slide>
       <img src="assets/tmp/profile-images/DSC_8618.JPG" />
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/bebe_3.jpg"/>
     </ion-slide>
     <ion-slide>
       <img src="assets/tmp/profile-images/DSC_8617.JPG"/>
     </ion-slide>
     <ion-slide>
-      <img src="assets/tmp/profile-images/DSC_8618.JPG"/>
+      <img src="assets/img/bebe_1.jpg" />
     </ion-slide>
   </ion-slides>
 
-  <!-- Baby part -->
-  
   <!-- Progress bar -->
-  <progress-bar></progress-bar>
+  <div style="margin-top: 10px;"><progress-bar></progress-bar></div>
   <!-- 4 Last weeks -->
- <last-weeks-summary></last-weeks-summary>
+  <div style="margin-top: 10px;"><last-weeks-summary ></last-weeks-summary></div>
  
 </ion-content>
