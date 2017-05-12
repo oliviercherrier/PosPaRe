@@ -9,7 +9,8 @@ import {AuthService} from '../services/auth';
 import { MyApp } from './app.component';
 import { FriendsPage } from '../pages/friends/friends';
 import { HomePage } from '../pages/home/home';
-import {ListOfActivitiesPage} from '../pages/list-of-activities/list-of-activities';
+import {MyListOfActivitiesPage} from '../pages/my-list-of-activities/my-list-of-activities';
+import {HerListOfActivitiesPage} from '../pages/her-list-of-activities/her-list-of-activities';
 import {UserSettingsPage} from '../pages/user-settings/user-settings';
 import {RecordActivityPage} from '../pages/record-activity/record-activity';
 import {StatisticsPage} from '../pages/statistics/statistics';
@@ -23,6 +24,7 @@ import {LastWeeksSummaryComponent} from '../components/last-weeks-summary/last-w
 import {ProfilePage} from'../pages/profile/profile';
 import  {LargeChartsPage} from '../pages/large-charts/large-charts'
 import {LikeAndCommentsPage} from '../pages/like-and-comments/like-and-comments';
+import {ListOfActivitiesComponent} from '../components/list-of-activities/list-of-activities';
 
 let storage: Storage = new Storage();
 
@@ -40,7 +42,8 @@ export function getAuthHttp(http) {
     MyApp,
     FriendsPage,
     HomePage,
-    ListOfActivitiesPage,
+    MyListOfActivitiesPage,
+    HerListOfActivitiesPage,
     UserSettingsPage,
     RecordActivityPage,
     StatisticsPage,
@@ -50,6 +53,7 @@ export function getAuthHttp(http) {
     WeightChartsComponent,
     ProgressBarComponent,
     LastWeeksSummaryComponent,
+    ListOfActivitiesComponent,
     ProfilePage,
     LargeChartsPage,
     LikeAndCommentsPage
@@ -65,7 +69,8 @@ export function getAuthHttp(http) {
     MyApp,
     FriendsPage,
     HomePage,
-    ListOfActivitiesPage,
+    MyListOfActivitiesPage,
+    HerListOfActivitiesPage,
     UserSettingsPage,
     RecordActivityPage,
     StatisticsPage,
