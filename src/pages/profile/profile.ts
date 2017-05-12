@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import {HerListOfActivitiesPage} from '../her-list-of-activities/her-list-of-activities'
+
 /*
   Generated class for the Profile page.
 
@@ -19,11 +21,7 @@ export class ProfilePage {
     this.curFriend = navParams.get('friend');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
-
   displayRecentActivities(){
-
+    this.navCtrl.push(HerListOfActivitiesPage,{users: this.curFriend});
   }
 }

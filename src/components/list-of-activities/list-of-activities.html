@@ -1,0 +1,25 @@
+<!--
+  Generated template for the ListOfActivities component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+<ion-card *ngFor="let activity of activities" padding >
+  <ion-card-header (click)="activityClicked(activity)"  no-padding>
+    <ion-item text-wrap>
+      <ion-avatar item-left>
+        <img style="width: 100% !important; height : 100% !important; max-width: 50px !important; max-height: 50px !important;" src="assets/img/lucile.jpg" />
+      </ion-avatar>
+      <h2>Sortie à vélo matinale Sortie à vélo matinale</h2>
+      <p style="font-size: 80%"> {{users}}</p>
+    </ion-item>
+    <ion-item text-wrap style="margin-top: -13px">
+      <ion-icon item-left style=" color: black; width: 40px; font-size: 20px" name="bicycle"></ion-icon>
+      <p> <span>83.5 km</span> <span style="margin-left: 10px">200 m</span> </p>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content no-padding>
+    <div id="map_{{context}}_{{activity.id}}" style="height: 250px"></div>
+  </ion-card-content>
+</ion-card>

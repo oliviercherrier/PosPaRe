@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import {StatisticsPage} from '../statistics/statistics';
-import {ListOfActivitiesPage} from '../list-of-activities/list-of-activities';
+import {MyListOfActivitiesPage} from '../my-list-of-activities/my-list-of-activities';
 import {FriendsPage} from '../friends/friends';
 import {AuthService} from '../../services/auth';
 /*
@@ -22,7 +22,7 @@ export class HomePage {
   private tabFriends;
 
   constructor(private auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
-    this.tabActivites = ListOfActivitiesPage;
+    this.tabActivites = MyListOfActivitiesPage;
     this.tabStatistics = StatisticsPage;
     this.tabFriends = FriendsPage;
   }
