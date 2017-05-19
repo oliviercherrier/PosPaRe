@@ -25,10 +25,12 @@ export class ListOfActivitiesComponent {
   @Input('context') context: string;
 
 
+  maps: Array<any>;
   activities: Array<{fileName: string, id: string}>;
   initialized: boolean = false;
 
   constructor(public navCtrl: NavController) {
+    this.maps = [];
 
     // Create one div per activity to display
     this.activities = [];
@@ -39,10 +41,16 @@ export class ListOfActivitiesComponent {
   }
 
   ngAfterViewChecked(){
-    if (this.initialized){
+    if(this.initialized){
+      for(let mapId in this.maps){
+        this.maps[mapId].invalidateSize(true);
+      }
       return;
     }
 
+  
+
+    console.log("Start display of activities");
     // Populate each activity div with the related activity mapsCreate one div per activity to displa
     for (let activity of this.activities){
       let my_map = L.map('map_' + this.context + "_" +  activity.id);
@@ -106,7 +114,7 @@ export class ListOfActivitiesComponent {
       );
 
       my_map.addControl(new commentButtonCtrl());
-
+      this.maps.push(my_map);
     }
     this.initialized = true;
   }
