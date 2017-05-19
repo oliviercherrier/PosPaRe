@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-list no-lines no-padding>
-    <ion-item no-padding text-wrap>
+    <ion-item no-padding text-wrap (click)="displayProfile()">
       <ion-icon name="person" item-left (click)="showProfile()"></ion-icon>
       <h2>Lucile Boisgontier</h2>
       <button color="secondary" ion-button item-right (click)="acceptRequest()"> <ion-icon name="checkmark"></ion-icon> </button>

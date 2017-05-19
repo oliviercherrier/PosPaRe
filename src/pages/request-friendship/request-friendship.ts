@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {ProfilePage} from '../profile/profile';
 
 /*
   Generated class for the RequestFriendship page.
@@ -19,4 +20,9 @@ export class RequestFriendshipPage {
     console.log('ionViewDidLoad RequestFriendshipPage');
   }
 
+  displayProfile(){
+    this.navCtrl.push(ProfilePage, {
+      friend: {name:  "Lucile Boisgontier"}
+    });
+  }
 }
