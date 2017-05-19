@@ -24,7 +24,7 @@ export class AuthService {
     },
     language: 'fr',
     languageDictionary: {
-      title: 'Entrer'
+      title: 'Connectez-vous'
     },
     theme: {
       logo: 'assets/img/logo.png'
