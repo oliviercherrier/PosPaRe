@@ -15,14 +15,24 @@
 
 <ion-content padding>
   <form (ngSubmit)="logForm()">
-    <ion-item>
+    <ion-item-divider style="font-size: 130%">Identité</ion-item-divider>
+    <ion-item no-lines>
       <ion-label style="width: 100px">Nom</ion-label>
       <ion-input type="text" [(ngModel)]="userSettings.lastname" name="lastname"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item no-lines>
       <ion-label style="width: 100px">Prénom</ion-label>
       <ion-input type="text"  [(ngModel)]="userSettings.firstname" name="firstname"></ion-input>
     </ion-item>
+    <ion-item-divider style="font-size: 130%">Pratiques sportives</ion-item-divider>
+    <ion-item no-lines>
+      <ion-label style="width: 100px">Objectif poids</ion-label>
+      <ion-input type="number" [(ngModel)]="userSettings.target_weight" name="weight_objective"></ion-input>
+    </ion-item> 
+    <ion-item no-lines>
+      <ion-label style="width: 100px">Objectif sport</ion-label>
+      <ion-input type="number" [(ngModel)]="userSettings.target_sport_volume_per_week" name="sport_objective"></ion-input>
+    </ion-item> 
     <button ion-button type="submit" block>Sauvegarder</button>
   </form>
 </ion-content>

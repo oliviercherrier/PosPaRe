@@ -13,7 +13,13 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class UserSettingsPage {
   
-  private userSettings = {};
+  private userSettings = {
+    firstname: "Lucile",
+    lastname: "Boisgontier",
+    target_weight: 62,
+    target_sport_volume_per_week: 3
+
+  };
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
