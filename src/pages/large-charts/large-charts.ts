@@ -42,7 +42,7 @@ export class LargeChartsPage {
 
   private inEditMode: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams/*, private screenOrientation: ScreenOrientation*/, public platform: Platform, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public alertCtrl: AlertController) {
     Highcharts.setOptions(HIGHCHARTS_OPTIONS);
 
     this.mumyWeightChartOptions = {
@@ -92,12 +92,23 @@ export class LargeChartsPage {
           allowPointSelect: true
         },
         {
-          name: 'Poids initial',  color: 'red', marker: {enabled: false}, data: [            
+          name: 'Poids initial',  
+          color: 'red', 
+          marker: {enabled: false}, 
+          data: [            
           [Date.UTC(2017, 2, 21), 82],
           [new Date().getTime(), 82]]
         },
         {
-          name: 'Poids cible',  color: 'green', marker: {enabled: false}, data: [            
+          name: 'Poids cible',  
+          color: 'green', 
+          marker: {enabled: false}, 
+          events: {
+            click: () => {
+              this.setupTargetWeight();
+            }
+          },
+          data: [            
           [Date.UTC(2017, 2, 21), 63],
           [new Date().getTime(), 63]]
         }
@@ -153,6 +164,27 @@ export class LargeChartsPage {
     };
   }
   
+  setupTargetWeight(){
+    let alert = this.alertCtrl.create({
+      title: 'Nouveau poids cible',
+      inputs: [
+        {
+          name: 'target_weight',
+          placeholder: '62'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Enregistrer',
+          handler: data => {
+            // TODO
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   ionViewDidEnter() {
   }
 
