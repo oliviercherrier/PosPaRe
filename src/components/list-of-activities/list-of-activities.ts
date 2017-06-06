@@ -49,8 +49,6 @@ export class ListOfActivitiesComponent {
     }
 
   
-
-    console.log("Start display of activities");
     // Populate each activity div with the related activity mapsCreate one div per activity to displa
     for (let activity of this.activities){
       let my_map = L.map('map_' + this.context + "_" +  activity.id);

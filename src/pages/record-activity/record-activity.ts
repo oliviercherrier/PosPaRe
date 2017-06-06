@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform, FabContainer, AlertController} from 'ionic-angular';
-import {WORKOUT_STATUS} from './workout-status';
+import {WORKOUT_STATUS, WORKOUT_TYPE, WORKOUT_CATEGORY} from './workout-status';
 
 import * as L from 'leaflet';
 
@@ -14,7 +14,9 @@ require('leaflet-easybutton');
 })
 export class RecordActivityPage {
   WORKOUT_STATUS: typeof WORKOUT_STATUS = WORKOUT_STATUS;
-  /**
+  WORKOUT_TYPE: typeof WORKOUT_TYPE = WORKOUT_TYPE;
+  WORKOUT_CATEGORY: typeof WORKOUT_CATEGORY = WORKOUT_CATEGORY;
+  /** 
   * Reference to BackgroundGeolocation
   */
   private bgGeo: any;
@@ -24,13 +26,11 @@ export class RecordActivityPage {
   private currentLocationErrorLCircle: any; // Leaflet CircleMarker
   private lastRecenteringTimestamp = 0; // Timestamp when the last recentering of location have been made on Leaflet
 
-  private workoutStatus: WORKOUT_STATUS = WORKOUT_STATUS.NotStarted;
+  public workoutStatus: WORKOUT_STATUS = WORKOUT_STATUS.NotStarted;
+  public workoutType: WORKOUT_TYPE = WORKOUT_TYPE.bicycle;
+  public workoutCategory: WORKOUT_CATEGORY = WORKOUT_CATEGORY.path;
 
-  public nav: NavController;
-  public platform: Platform;
-  constructor(public _navCtrl: NavController, public _platform: Platform, public alertCtrl: AlertController) {
-    this.nav = _navCtrl;
-    this.platform = _platform;  
+  constructor(public navCtrl: NavController, public platform: Platform, public alertCtrl: AlertController) {
   }
 
   configureBackgroundGeolocation() {
@@ -75,7 +75,7 @@ export class RecordActivityPage {
 
     this.platform.ready().then(this.configureBackgroundGeolocation.bind(this));
   }
-
+  
   startWorkout(){
     this.workoutStatus = WORKOUT_STATUS.InProgress;
 
@@ -131,7 +131,23 @@ export class RecordActivityPage {
     console.log('- http failure: ', response);
   }
 
-  selectWorkoutType(network: string, fab: FabContainer) {
+  selectWorkoutType(workoutType: WORKOUT_TYPE, fab: FabContainer) {
+
+    this.workoutType = workoutType;
+    switch(workoutType) {
+      case WORKOUT_TYPE.bicycle:
+        this.workoutCategory = WORKOUT_CATEGORY.path;
+        break;
+      case WORKOUT_TYPE.walk:
+        this.workoutCategory = WORKOUT_CATEGORY.path;
+        break;
+      case WORKOUT_TYPE.fitness:
+        this.workoutCategory = WORKOUT_CATEGORY.static;
+        break;
+      default:
+        console.error("Unfound workout type: " + workoutType);
+    }
+
     fab.close();
   }
 
@@ -155,7 +171,7 @@ export class RecordActivityPage {
         {
           text: 'Save',
           handler: data => {
-            this.nav.pop();
+            this.navCtrl.pop();
           }
         }
       ]

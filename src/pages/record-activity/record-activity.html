@@ -14,12 +14,22 @@
 
 
 <ion-content padding>
-  <div id="mapid" style="height: 100%;"></div>
+  <div id="mapid" style="height: 100%;" [hidden]="this.workoutCategory != WORKOUT_CATEGORY.path">
+  </div>
+  <div *ngIf="this.workoutCategory == WORKOUT_CATEGORY.static">
+    <h1>Angular 2 Timer Example</h1>
+
+  </div>
   <ion-fab top right #fab5>
-    <button ion-fab clear small outline><ion-icon name="bicycle"></ion-icon></button>
-    <ion-fab-list side="bottom">
-      <button ion-fab clear small outline (click)="selectWorkoutType('bicycle', fab5)"><ion-icon name="bicycle"></ion-icon></button>
-      <button ion-fab clear small outline (click)="selectWorkoutType('walk', fab5)"><ion-icon name="walk"></ion-icon></button>
+    <button ion-fab clear small outline [ngSwitch] = "this.workoutType">
+      <ion-icon *ngSwitchCase="WORKOUT_TYPE.bicycle" name="bicycle"></ion-icon>
+      <ion-icon *ngSwitchCase="WORKOUT_TYPE.fitness" name="body"></ion-icon>
+      <ion-icon *ngSwitchCase="WORKOUT_TYPE.walk" name="walk"></ion-icon>
+    </button>
+    <ion-fab-list side="bottom" >
+      <button ion-fab clear small outline (click)="selectWorkoutType(WORKOUT_TYPE.walk, fab5)"><ion-icon name="walk"></ion-icon></button>
+      <button ion-fab clear small outline (click)="selectWorkoutType(WORKOUT_TYPE.fitness, fab5)"><ion-icon name="body"></ion-icon></button>
+      <button ion-fab clear small outline (click)="selectWorkoutType(WORKOUT_TYPE.bicycle, fab5)"><ion-icon name="bicycle"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>
