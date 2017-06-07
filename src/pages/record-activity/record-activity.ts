@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
 import { NavController, Platform, FabContainer, AlertController} from 'ionic-angular';
 import {WORKOUT_STATUS, WORKOUT_TYPE, WORKOUT_CATEGORY} from './workout-status';
+import {StopwatchComponent} from '../../components/stopwatch/stopwatch';
 
 import * as L from 'leaflet';
 
@@ -13,6 +14,9 @@ require('leaflet-easybutton');
   templateUrl: 'record-activity.html'
 })
 export class RecordActivityPage {
+  @ViewChild(StopwatchComponent)
+  private stopwatch: StopwatchComponent;
+
   WORKOUT_STATUS: typeof WORKOUT_STATUS = WORKOUT_STATUS;
   WORKOUT_TYPE: typeof WORKOUT_TYPE = WORKOUT_TYPE;
   WORKOUT_CATEGORY: typeof WORKOUT_CATEGORY = WORKOUT_CATEGORY;
@@ -74,19 +78,22 @@ export class RecordActivityPage {
     this.currentLocationErrorLCircle = L.circle([1,1],{weight: 0, fillColor: "#0000ff", fillOpacity: 0.5}).addTo(this.map);
 
     this.platform.ready().then(this.configureBackgroundGeolocation.bind(this));
+
   }
   
   startWorkout(){
     this.workoutStatus = WORKOUT_STATUS.InProgress;
-
+    this.stopwatch.startTimer();
   }
 
   pauseWorkout(){
     this.workoutStatus = WORKOUT_STATUS.Paused;
+    this.stopwatch.pauseTimer();
   }
 
   resumeWorkout(){
     this.workoutStatus = WORKOUT_STATUS.InProgress;
+    this.stopwatch.startTimer();
   }
 
   stopWorkout(){

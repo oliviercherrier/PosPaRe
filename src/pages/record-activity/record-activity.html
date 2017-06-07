@@ -14,12 +14,10 @@
 
 
 <ion-content padding>
-  <div id="mapid" style="height: 100%;" [hidden]="this.workoutCategory != WORKOUT_CATEGORY.path">
+  <div style="height: 80%">
+    <div id="mapid" style="height: 100%;" [hidden]="this.workoutCategory != WORKOUT_CATEGORY.path"></div>
   </div>
-  <div *ngIf="this.workoutCategory == WORKOUT_CATEGORY.static">
-    <h1>Angular 2 Timer Example</h1>
-
-  </div>
+  <stopwatch style="text-align: center; width: 100%;"></stopwatch>
   <ion-fab top right #fab5>
     <button ion-fab clear small outline [ngSwitch] = "this.workoutType">
       <ion-icon *ngSwitchCase="WORKOUT_TYPE.bicycle" name="bicycle"></ion-icon>

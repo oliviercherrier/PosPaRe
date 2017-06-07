@@ -25,6 +25,7 @@ import {ProfilePage} from'../pages/profile/profile';
 import  {LargeChartsPage} from '../pages/large-charts/large-charts'
 import {LikeAndCommentsPage} from '../pages/like-and-comments/like-and-comments';
 import {ListOfActivitiesComponent} from '../components/list-of-activities/list-of-activities';
+import {StopwatchComponent} from '../components/stopwatch/stopwatch';
 
 let storage: Storage = new Storage();
 
@@ -54,6 +55,7 @@ export function getAuthHttp(http) {
     ProgressBarComponent,
     LastWeeksSummaryComponent,
     ListOfActivitiesComponent,
+    StopwatchComponent,
     ProfilePage,
     LargeChartsPage,
     LikeAndCommentsPage
