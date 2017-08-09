@@ -54,10 +54,9 @@ export class RecordActivityPage {
       desiredAccuracy: 0,
       distanceFilter: 0,
       locationUpdateInterval: 0,
-      fastestLocationUpdateInterval: 0
-
-      // url: 'http://192.168.11.100:8080/locations',
-      // autoSync: true
+      fastestLocationUpdateInterval: 0,
+      url: 'http://192.168.36.243:3000/api/v1/workouts/2/locations',
+      autoSync: false
     }, (state) => {
       // 4. Start the plugin.
       this.bgGeo.start();
@@ -82,16 +81,34 @@ export class RecordActivityPage {
   }
   
   startWorkout(){
+    // Start to sent location to server
+    this.bgGeo.setConfig({
+      autoSync: true
+    }, (state) => {
+      console.log("autoSync set to true")
+    });
+
     this.workoutStatus = WORKOUT_STATUS.InProgress;
     this.stopwatch.startTimer();
   }
 
   pauseWorkout(){
+    this.bgGeo.setConfig({
+      autoSync: false
+    }, (state) => {
+      console.log("autoSync set to false")
+    });
+
     this.workoutStatus = WORKOUT_STATUS.Paused;
     this.stopwatch.pauseTimer();
   }
 
   resumeWorkout(){
+    this.bgGeo.setConfig({
+      autoSync: true
+    }, (state) => {
+      console.log("autoSync set to true")
+    });
     this.workoutStatus = WORKOUT_STATUS.InProgress;
     this.stopwatch.startTimer();
   }

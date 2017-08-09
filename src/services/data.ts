@@ -13,8 +13,7 @@ export class DataService {
     private actionUrl: string;
 
     constructor(private _http: AuthHttp) {
-
-        this.actionUrl = PopareApiVars.POPARE_API_URL + 'todos/';
+        this.actionUrl = PopareApiVars.POPARE_API_URL + 'api/v1/users';
     }
 
     public GetAll = (): Observable<MyTypedItem[]> => {
