@@ -6,6 +6,8 @@ import {HomePage} from '../pages/home/home';
 import {RecordActivityPage} from '../pages/record-activity/record-activity';
 import {UserSettingsPage} from '../pages/user-settings/user-settings';
 
+import Auth0Cordova from '@auth0/cordova';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -33,6 +35,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+
+      (<any>window).handleOpenURL = (url) => {
+        Auth0Cordova.onRedirectUri(url);
+      };
     });
   }
 

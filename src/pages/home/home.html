@@ -4,6 +4,6 @@
     <ion-tab tabTitle="Amis" [root]="tabFriends" tabIcon="people"></ion-tab>
 </ion-tabs>
 
-<ion-content padding *ngIf="!auth.authenticated()">
+<ion-content padding *ngIf="!auth.isAuthenticated()">
   <button ion-button block (click)="auth.login()">Login</button>
 </ion-content>

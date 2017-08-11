@@ -27,6 +27,7 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="AndroidLaunchMode" value="singleTask" />
     <preference name="orientation" value="portrait" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
@@ -42,7 +43,14 @@
         <variable name="MOTION_USAGE_DESCRIPTION" value="Using the accelerometer increases battery-efficiency by intelligently toggling location-tracking only when the device is detected to be moving" />
     </plugin>
     <plugin name="cordova-plugin-console" spec="1.0.5" />
+    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
+        <variable name="URL_SCHEME" value="com.transistorsoft.backgroundgeolocation.ionic" />
+        <variable name="ANDROID_SCHEME" value="com.transistorsoft.backgroundgeolocation.ionic" />
+        <variable name="ANDROID_HOST" value="oliviercherrier.eu.auth0.com" />
+        <variable name="ANDROID_PATHPREFIX" value="/cordova/com.transistorsoft.backgroundgeolocation.ionic/callback" />
+    </plugin>
     <plugin name="cordova-plugin-device" spec="1.1.4" />
+    <plugin name="cordova-plugin-safariviewcontroller" spec="^1.4.7" />
     <plugin name="cordova-plugin-screen-orientation" spec="https://github.com/apache/cordova-plugin-screen-orientation" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="2.2.1" />
